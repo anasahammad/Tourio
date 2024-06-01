@@ -1,9 +1,12 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Shared/Navbar/Navbar";
 
 
 const Main = () => {
     return (
         <div>
-            <h1>Text Helo Banladesh</h1>
+            <Navbar/>
+            <Outlet/>
         </div>
     );
 };
