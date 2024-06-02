@@ -6,7 +6,7 @@ const AddPackageForm = ({handleForm, handleFiles, imagePreview}) => {
         <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
       <form onSubmit={handleForm}>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
-          <div className='space-y-6'>
+          <div className='space-y-6 '>
             <div className='space-y-1 text-sm'>
               <label htmlFor='destination' className='block text-gray-600'>
                Destination
@@ -40,10 +40,14 @@ const AddPackageForm = ({handleForm, handleFiles, imagePreview}) => {
               </select>
             </div>
 
-            <div className="image-previews">
-        {imagePreview.map((url, index) => (
-          <img key={index} src={url} alt={`Preview ${index}`} width="100" />
+            <div className="image-previews border p-2 space-y-4">
+                <h1 className="text-center text-2xl mb-4 font-medium">All Images preview here</h1>
+                <div className="grid grid-cols-2">
+
+        {imagePreview?.map((url, index) => (
+          <img key={index} src={url} alt={`Preview ${index}`} width="150" />
         ))}
+                </div>
       </div>
           </div>
           <div className='space-y-6'>

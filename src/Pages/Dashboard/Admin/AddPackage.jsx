@@ -3,6 +3,7 @@ import AddPackageForm from "../../../components/Form/AddPackageForm";
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 
 const AddPackage = () => {
@@ -12,11 +13,13 @@ const axiosSecure = useAxiosSecure()
 
 const {mutateAsync} = useMutation({
     mutationFn :async packageData =>{
-        const {data} = await axios.post('http://localhost:5000/package', packageData)
+        const {data} = await axiosSecure.post('/package', packageData)
         return data;
     },
     onSuccess:()=>{
         console.log("Package added successfully");
+        toast.success("Package Added Successful")
+        
 
     }
 })
@@ -40,16 +43,12 @@ const {mutateAsync} = useMutation({
         const tourPlan = form.tourPlan.value;
 
 
-        // const formData = new FormData()
-
-        // images.forEach((image, index)=>{
-        //     formData.append(`image${index}`, image)
-        // })
+        
 
         const packageImages = []
 
         try{
-            //
+            //uploading multiple images by selecting at a time
 
             for (const image of images) {
                 const formData = new FormData();
@@ -72,12 +71,13 @@ const {mutateAsync} = useMutation({
                 title, destination, tourTypes, price, groupSize, totalDays, shortDescription, tourPlan, packageImages
             }
             await mutateAsync(newPackage)
-
+            form.reset()
 
         } 
         catch (err){
 
             console.log(err.message);
+            toast.error(err.message)
         }
 
         
