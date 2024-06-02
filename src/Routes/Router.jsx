@@ -7,6 +7,8 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import Blogs from "../Pages/Blogs/Blogs";
 import Login from "../Pages/Authentication/Login";
 import SignUp from "../Pages/Authentication/SignUp";
+import DashboardLayout from "../Layoutes/DashboardLayout";
+import AddPackage from "../Pages/Dashboard/Admin/AddPackage";
 
 export const router = createBrowserRouter([ 
     { 
@@ -46,5 +48,16 @@ export const router = createBrowserRouter([
         element: <SignUp/>
     },
     
-
+    {
+        path: '/dashboard',
+        element: <DashboardLayout/>,
+        children: [
+            {
+                path: "add-package",
+                element: <AddPackage/>
+            }
+        ]
+      }
    ]); 
+
+  
