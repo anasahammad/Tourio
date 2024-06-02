@@ -6,7 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 
 
 const Navbar = () => {
-    const {user} = useAuth()
+    const {user, logOut} = useAuth()
     const [isOpen, setIsOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     
@@ -98,7 +98,7 @@ const Navbar = () => {
                     {dropdownOpen && (
                         <div className="lg:hidden absolute right-0 top-16 w-full bg-white shadow-lg z-10">
                             <div className="px-4 py-3">
-                                <p className="text-sm font-medium text-gray-900">{user.name}</p>
+                                <p className="text-sm font-medium text-gray-900">{user.displayName}</p>
                                 <p className="text-sm text-gray-500">{user.email}</p>
                             </div>
                             <div className="py-1">
@@ -117,7 +117,7 @@ const Navbar = () => {
                             </div>
                             <div className="py-1">
                                 <button
-                                    onClick={() => console.log('Logging out...')}
+                                    onClick={logOut}
                                     className="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 hover:bg-gray-100"
                                 >
                                     Logout
@@ -143,7 +143,7 @@ const Navbar = () => {
                             {dropdownOpen && (
                                 <div className="absolute right-0 w-56 top-12 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg outline-none">
                                     <div className="px-4 py-3">
-                                        <p className="text-sm font-medium text-gray-900">{user.name}</p>
+                                        <p className="text-sm font-medium text-gray-900">{user.displayName}</p>
                                         <p className="text-sm text-gray-500">{user.email}</p>
                                     </div>
                                     <div className="py-1">
@@ -162,7 +162,7 @@ const Navbar = () => {
                                     </div>
                                     <div className="py-1">
                                         <button
-                                            onClick={() => console.log('Logging out...')}
+                                            onClick={logOut}
                                             className="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 hover:bg-gray-100"
                                         >
                                             Logout
