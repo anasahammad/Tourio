@@ -5,6 +5,8 @@ import Community from "../Pages/Community/Community";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Blogs from "../Pages/Blogs/Blogs";
+import Login from "../Pages/Authentication/Login";
+import SignUp from "../Pages/Authentication/SignUp";
 
 export const router = createBrowserRouter([ 
     { 
@@ -32,6 +34,17 @@ export const router = createBrowserRouter([
             path: '/contact-us',
             element: <ContactUs/>
         }
+        
     ] 
     }, 
+    {
+        path: "/login",
+        element: <Login/>
+    },
+    {
+        path: "/sign-up",
+        element: <SignUp/>
+    },
+    
+
    ]); 
