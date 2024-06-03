@@ -11,15 +11,22 @@ import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import { FaPlus, FaUserCog } from 'react-icons/fa'
+import useRole from '../../../hooks/useRole'
+import MenuItem from './Menu/MenuItem'
+import TouristMenu from './Menu/TouristMenu'
+import AdminMenu from './Menu/AdminMenu'
+import GuideMenu from './Menu/GuideMenu'
 
 const Sidebar = () => {
   const { logOut } = useAuth()
   const [isActive, setActive] = useState(false)
-
+  const [role, isLoading] = useRole()
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
   }
+  console.log(role);
+  if(isLoading) return <p>Loading hocche</p>
   return (
     <>
       {/* Small Screen Navbar */}
@@ -69,51 +76,23 @@ const Sidebar = () => {
 
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
-            {/* Conditional toggle button here.. */}
-
+    
             {/*  Menu Items */}
             <nav>
-              {/* Statistics */}
-              <NavLink
-                to='/dashboard'
-                end
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FcSettings className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>My Profile</span>
-              </NavLink>
-
-              {/* Add Room */}
-              <NavLink
-                to='add-package'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FaPlus className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>Add Package</span>
-              </NavLink>
-              {/* My Listing */}
-              <NavLink
-                to='my-listings'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FaUserCog className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>Manage Users</span>
-              </NavLink>
+              {/* My Profile */}
+            
+              <MenuItem 
+                label={"My Profile"}
+                route={"my-profile"}
+                icon={FcSettings}
+              ></MenuItem>
+              
+            {role === 'tourist' && <TouristMenu/>}
+            {role === 'admin' && <AdminMenu/>}
+            {role === 'guide' && <GuideMenu/>}
+            
+             
+              
             </nav>
           </div>
         </div>

@@ -46,7 +46,7 @@ const Navbar = () => {
                                     className="flex items-center focus:outline-none"
                                 >
                                     <img
-                                        src={user.photoURL}
+                                        src={user?.photoURL}
                                         alt="profile"
                                         className="w-8 h-8 rounded-full"
                                     />
@@ -98,8 +98,8 @@ const Navbar = () => {
                     {dropdownOpen && (
                         <div className="lg:hidden absolute right-0 top-16 w-full bg-white shadow-lg z-10">
                             <div className="px-4 py-3">
-                                <p className="text-sm font-medium text-gray-900">{user.displayName}</p>
-                                <p className="text-sm text-gray-500">{user.email}</p>
+                                <p className="text-sm font-medium text-gray-900">{user?.displayName}</p>
+                                <p className="text-sm text-gray-500">{user?.email}</p>
                             </div>
                             <div className="py-1">
                                 <Link to="/dashboard"
@@ -134,7 +134,7 @@ const Navbar = () => {
                                 className="flex items-center focus:outline-none"
                             >
                                 <img
-                                    src={user.photoURL}
+                                    src={user?.photoURL}
                                     alt="profile"
                                     className="w-8 h-8 rounded-full"
                                 />
@@ -143,8 +143,8 @@ const Navbar = () => {
                             {dropdownOpen && (
                                 <div className="absolute right-0 w-56 top-12 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg outline-none">
                                     <div className="px-4 py-3">
-                                        <p className="text-sm font-medium text-gray-900">{user.displayName}</p>
-                                        <p className="text-sm text-gray-500">{user.email}</p>
+                                        <p className="text-sm font-medium text-gray-900">{user?.displayName}</p>
+                                        <p className="text-sm text-gray-500">{user?.email}</p>
                                     </div>
                                     <div className="py-1">
                                         <Link to="/dashboard"
