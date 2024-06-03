@@ -10,6 +10,7 @@ import SignUp from "../Pages/Authentication/SignUp";
 import DashboardLayout from "../Layoutes/DashboardLayout";
 import AddPackage from "../Pages/Dashboard/Admin/AddPackage";
 import PackageDetails from "../Pages/Home/TravelGuideSec/Tabs/OurPackages/PackageDetails";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 
 export const router = createBrowserRouter([ 
     { 
@@ -63,6 +64,12 @@ export const router = createBrowserRouter([
             {
                 path: "add-package",
                 element: <AddPackage/>
+            },
+
+            // admin routes
+            {
+                path: "manage-users",
+                element: <ManageUsers/>
             }
         ]
       }

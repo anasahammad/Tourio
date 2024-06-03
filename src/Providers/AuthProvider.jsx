@@ -75,6 +75,8 @@ const AuthProvider = ({ children }) => {
   const saveUser = async user => {
     const currentUser = {
       email: user.email,
+      name: user?.displayName,
+      photo: user?.photoURL,
       role: "tourist",
       status: 'verified'
     }

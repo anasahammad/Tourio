@@ -16,17 +16,47 @@ import MenuItem from './Menu/MenuItem'
 import TouristMenu from './Menu/TouristMenu'
 import AdminMenu from './Menu/AdminMenu'
 import GuideMenu from './Menu/GuideMenu'
+import { FaPaperPlane } from 'react-icons/fa6'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
+import { useMutation } from '@tanstack/react-query'
+import toast from 'react-hot-toast'
 
 const Sidebar = () => {
-  const { logOut } = useAuth()
+  const { user } = useAuth()
   const [isActive, setActive] = useState(false)
   const [role, isLoading] = useRole()
+  const axiosSecure = useAxiosSecure()
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
   }
   console.log(role);
   if(isLoading) return <p>Loading hocche</p>
+
+
+ 
+  const handleRequest = async ()=>{
+       try{
+        const guide = {
+          email : user?.email,
+          name: user?.displayName,
+          photo: user?.photoURL,
+          role : 'tourist',
+          status: 'requested'
+        }
+      const {data} =   await axiosSecure.patch(`/users/update/${user?.email}`, guide)
+        console.log(data);
+        if(data.modifiedCount > 0){
+          toast.success("Request Sent to the admin. Please wait for the response")
+        }
+        else{
+          toast.success("Please wait for admin response")
+        }
+       } 
+       catch (error){
+        toast.error(error.message)
+       }
+  }
   return (
     <>
       {/* Small Screen Navbar */}
@@ -91,7 +121,13 @@ const Sidebar = () => {
             {role === 'admin' && <AdminMenu/>}
             {role === 'guide' && <GuideMenu/>}
             
-             
+            {
+              role === 'tourist' &&   <div className='flex items-center px-4 py-2 my-5 '>
+              <button onClick={handleRequest} className='text-gray-700 font-bold flex gap-3 items-center '> 
+              <FaPaperPlane/>  Request to Admin</button>
+             </div>
+            }
+           
               
             </nav>
           </div>
