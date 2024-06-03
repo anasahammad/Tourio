@@ -7,13 +7,27 @@ import TourPlanDetails from "./TourPlanDetails";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { SlPeople } from "react-icons/sl";
 import { FaChevronDown } from "react-icons/fa";
+import { useState } from "react";
+import GuideListModal from "../../../../../components/Modal/GuideListModal";
+import BookingModal from "../../../../../components/Modal/BookingModal";
 
 
 
 
 const PackageDetails = () => {
     const item = useLoaderData()
-    console.log(item);
+    const [isOpen, setIsOpen] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
+
+    // console.log(item);
+
+    const closeModal = ()=>{
+        setIsOpen(false)
+    }
+
+    const closeBookingModal = ()=>{
+        setOpenModal(false)
+    }
     return (
         <div className="">
             <div className="bg-[#EFEEDB] py-6 px-4 text-center">
@@ -70,7 +84,7 @@ const PackageDetails = () => {
                 <p>Price varies by group size</p>
                 <div className="divider"></div>
                     <div className="bg-white px-4 py-4 rounded-md mb-6">
-                        <div className="flex justify-between">
+                        <div onClick={()=>setIsOpen(true)} className="flex justify-between">
                        <div className="flex items-center gap-3">
                        <SlPeople />
                         Available Tour Guide
@@ -79,11 +93,12 @@ const PackageDetails = () => {
                             <FaChevronDown className="flex justify-end"/> 
                         </div>
                         </div>
+                        <GuideListModal isOpen={isOpen} closeModal={closeModal}></GuideListModal>
                     </div>
                 <div >
-                    <button className="btn bg-[#18877B] text-white  w-full">Book This Plan</button>
+                    <button onClick={()=>setOpenModal(true)} className="btn bg-[#18877B] text-white  w-full">Book This Plan</button>
                 </div>
-
+                    <BookingModal openModal={openModal} closeBookingModal={closeBookingModal}></BookingModal>
                 <div className="px-3 py-4">
                     <h2 className="font-dm-sand text-[17px] font-semibold">Free Cancellation</h2>
                     <p>Up to 24 hours in advance</p>
