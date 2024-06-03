@@ -8,9 +8,10 @@ import { Link } from "react-router-dom";
 
 const PackageCard = ({item}) => {
     return (
+       <Link to={`/package-details/${item._id}`}>
         <div className="w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
         <img 
-          className="object-cover object-center w-full h-56" 
+          className="object-cover object-center w-full h-56 " 
           src={item?.packageImages[1]} 
           alt="avatar" 
         />
@@ -50,6 +51,7 @@ const PackageCard = ({item}) => {
          </div>
         </div>
       </div>
+       </Link>
     );
 };
 

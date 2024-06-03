@@ -9,6 +9,7 @@ import Login from "../Pages/Authentication/Login";
 import SignUp from "../Pages/Authentication/SignUp";
 import DashboardLayout from "../Layoutes/DashboardLayout";
 import AddPackage from "../Pages/Dashboard/Admin/AddPackage";
+import PackageDetails from "../Pages/Home/TravelGuideSec/Tabs/OurPackages/PackageDetails";
 
 export const router = createBrowserRouter([ 
     { 
@@ -35,7 +36,12 @@ export const router = createBrowserRouter([
         {
             path: '/contact-us',
             element: <ContactUs/>
-        }
+        },
+         {
+            path: "/package-details/:id",
+            element: <PackageDetails/>,
+            loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.id}`)
+        },
         
     ] 
     }, 
@@ -47,6 +53,8 @@ export const router = createBrowserRouter([
         path: "/sign-up",
         element: <SignUp/>
     },
+    
+   
     
     {
         path: '/dashboard',
