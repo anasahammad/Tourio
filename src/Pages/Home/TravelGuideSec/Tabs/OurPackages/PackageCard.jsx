@@ -17,7 +17,7 @@ const PackageCard = ({item}) => {
     const navigate = useNavigate()
     const {mutateAsync} = useMutation({
         mutationFn: async (wishlistItem)=>{
-            const {data} = await axiosSecure.post('/wishlist', wishlistItem)
+            const {data} = await axiosSecure.post('/wishlists', wishlistItem)
             return data;
         },
         onSuccess : ()=> {
@@ -36,6 +36,7 @@ const PackageCard = ({item}) => {
             photo: item.packageImages[1],
             destination: item.destination,
             price : item.price,
+            shortDescription: item.shortDescription,
             wishlistId : item._id,
             touristEmail : user?.email
         }

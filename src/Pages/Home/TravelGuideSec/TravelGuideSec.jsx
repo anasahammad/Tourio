@@ -2,6 +2,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 import Overview from "./Tabs/Overview";
 import OurPackages from "./Tabs/OurPackages/OurPackages";
+import MeetTourGuide from "./MeetOurTourGuide/MeetTourGuide";
 
 const TravelGuideSec = () => {
     return (
@@ -20,7 +21,7 @@ const TravelGuideSec = () => {
     <OurPackages/>
     </TabPanel>
     <TabPanel>
-      <h2>Any content 3</h2>
+     <MeetTourGuide/>
     </TabPanel>
   </Tabs> 
         </div>
