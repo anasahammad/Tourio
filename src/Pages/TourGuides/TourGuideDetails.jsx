@@ -1,12 +1,22 @@
-import { useLoaderData } from "react-router-dom";
+
+import { RiLayoutGrid2Fill } from "react-icons/ri";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 
 const TourGuideDetails = () => {
     const user = useLoaderData()
+    const navigate = useNavigate()
     console.log(user);
     return (
-        <div>
-            <h1>{user?.name}</h1>
+        <div className="container mx-auto">
+                <div onClick={()=>navigate(-1)} className="flex items-center font-bold gap-2 my-6">
+                <RiLayoutGrid2Fill />
+                    <h1>Back to Guide List</h1>
+                </div>
+
+                <div className="border">
+
+                </div>
         </div>
     );
 };

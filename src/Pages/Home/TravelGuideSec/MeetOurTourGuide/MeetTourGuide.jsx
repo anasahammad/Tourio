@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPub from "../../../../hooks/useAxiosPub";
+import { Link } from "react-router-dom";
 
 
 const MeetTourGuide = () => {
@@ -29,7 +30,7 @@ const MeetTourGuide = () => {
     <tbody>
       {/* row 1 */}
       {
-        guides?.map(guide=> <tr key={guide.name}>
+        guides?.map(guide=> <tr key={guide._id}>
             <td className="border px-4 py-2">
              
                 <div className="avatar">
@@ -45,7 +46,9 @@ language}</td>
             <td className="border px-4 py-2">{guide?.number}</td>
             <td className="border px-4 py-2">{guide?.email}</td>
             <td className="border px-4 py-2">
-              <button className="btn btn-ghost text-[#017b6e] btn-xs">details</button>
+             <Link to={`/guide-details/${guide.email}`}>
+             <button className="btn btn-ghost text-[#017b6e] btn-xs">details</button>
+             </Link>
             </td>
           </tr>)
       }
