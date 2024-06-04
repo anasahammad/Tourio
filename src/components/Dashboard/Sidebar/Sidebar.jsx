@@ -20,12 +20,19 @@ import { FaPaperPlane } from 'react-icons/fa6'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import TourGuideModal from '../../Modal/TourGuideModal'
 
 const Sidebar = () => {
   const { user } = useAuth()
   const [isActive, setActive] = useState(false)
   const [role, isLoading] = useRole()
+  const [isOpen, setIsOpen] = useState(false)
   const axiosSecure = useAxiosSecure()
+  const [startDate, setStartDate] = useState(new Date());
+
+  const closeModal = ()=>{
+    setIsOpen(false)
+  }
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
@@ -35,19 +42,35 @@ const Sidebar = () => {
 
 
  
-  const handleRequest = async ()=>{
+  const handleRequest = async (e)=>{
+    e.preventDefault()
+    const form = e.target;
+    const education = form.education.value;
+    const hobby = form.hobby.value;
+    const number = form.number.value;
+    const language = form.language.value;
+    const birthday = form.birthday.value
+    const about= form.about.value;
+    console.log(education, hobby, number, language, birthday ,about );
        try{
         const guide = {
           email : user?.email,
           name: user?.displayName,
           photo: user?.photoURL,
           role : 'tourist',
-          status: 'requested'
+          status: 'requested',
+          education,
+           hobby, 
+           number, 
+           language,
+            birthday ,
+            about
         }
       const {data} =   await axiosSecure.put(`/user`, guide)
         console.log(data);
         if(data.modifiedCount > 0){
           toast.success("Request Sent to the admin. Please wait for the response")
+          
         }
         else{
           toast.success("Please wait for admin response")
@@ -123,8 +146,18 @@ const Sidebar = () => {
             
             {
               role === 'tourist' &&   <div className='flex items-center px-4 py-2 my-5 '>
-              <button onClick={handleRequest} className='text-gray-700 font-bold flex gap-3 items-center '> 
+              <button onClick={()=>setIsOpen(true)} className='text-gray-700 font-bold flex gap-3 items-center '> 
               <FaPaperPlane/>  Request to Admin</button>
+
+              <TourGuideModal 
+               closeModal={closeModal}
+               isOpen={isOpen}
+               handleRequest={handleRequest}
+               startDate={startDate}
+               setStartDate={setStartDate}
+              >
+
+              </TourGuideModal>
              </div>
             }
            

@@ -36,7 +36,7 @@ const BookingForm = () => {
             <label htmlFor='location' className='block '>
               Select Tour Date
             </label>
-            <div className='w-full  '>{/* Calender */}
+            <div className='w-full  '>
             <DatePicker className='w-full' selected={startDate} onChange={(date) => setStartDate(date)} />
             </div>
           </div>

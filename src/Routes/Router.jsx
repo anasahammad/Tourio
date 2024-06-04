@@ -11,6 +11,7 @@ import DashboardLayout from "../Layoutes/DashboardLayout";
 import AddPackage from "../Pages/Dashboard/Admin/AddPackage";
 import PackageDetails from "../Pages/Home/TravelGuideSec/Tabs/OurPackages/PackageDetails";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
+import TourGuideDetails from "../Pages/TourGuides/TourGuideDetails";
 
 export const router = createBrowserRouter([ 
     { 
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
             path: "/package-details/:id",
             element: <PackageDetails/>,
             loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.id}`)
+        },
+         {
+            path: "/guide-details/:email",
+            element: <TourGuideDetails/>,
+            loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/tour-guide/${params.email}`)
         },
         
     ] 

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPub from "../../hooks/useAxiosPub";
+import { Link } from "react-router-dom";
 
 
 const GuideListTable = () => {
@@ -48,7 +49,7 @@ const GuideListTable = () => {
               </td>
              
               <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                <Link to={`/guide-details/${guide.email}`} className="btn btn-ghost btn-xs">details</Link>
               </th>
             </tr>)
             }
