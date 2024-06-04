@@ -1,34 +1,35 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const BookingForm = () => {
-    const [startDate, setStartDate] = useState(new Date());
+const BookingForm = ({guides, startDate, setStartDate,handleBooking }) => {
+  
+    
     return (
         <div className='w-full  mt-6 text-gray-800 rounded-xl '>
             
           
-      <form>
+      <form onSubmit={handleBooking}>
         <div className='grid grid-cols-1 gap-6'>
           
 
           <div className='space-y-1 text-sm'>
-            <label htmlFor='category' className='block text-gray-600'>
+            <label htmlFor='guideName' className='block text-gray-600'>
             Select Tour Guide
             </label>
             <select
               required
               className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
-              name='category'
+              name='guideName'
             >
-              {/* {categories.map(category => (
-                <option value={category.label} key={category.label}>
-                  {category.label}
+              {guides?.map(guide => (
+                <option value={guide.name} key={guide.name}>
+                  {guide.name}
                 </option>
-              ))} */}
+              ))}
 
-              <option value="">Anas</option>
+             
             </select>
           </div>
 

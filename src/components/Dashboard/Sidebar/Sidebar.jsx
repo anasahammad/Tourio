@@ -28,7 +28,7 @@ const Sidebar = () => {
   const [role, isLoading] = useRole()
   const [isOpen, setIsOpen] = useState(false)
   const axiosSecure = useAxiosSecure()
-  const [startDate, setStartDate] = useState(new Date());
+  
 
   const closeModal = ()=>{
     setIsOpen(false)
@@ -153,8 +153,7 @@ const Sidebar = () => {
                closeModal={closeModal}
                isOpen={isOpen}
                handleRequest={handleRequest}
-               startDate={startDate}
-               setStartDate={setStartDate}
+              
               >
 
               </TourGuideModal>

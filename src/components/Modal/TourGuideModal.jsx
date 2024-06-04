@@ -1,8 +1,8 @@
-import { Button, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
+import {  Dialog, DialogPanel,  Transition, TransitionChild } from "@headlessui/react";
 import TourGuideForm from "../Form/TourGuideForm";
 
 
-const TourGuideModal = ({isOpen, closeModal, handleRequest, setStartDate, startDate}) => {
+const TourGuideModal = ({isOpen, closeModal, handleRequest}) => {
     return (
         <div>
              <Transition appear show={isOpen}>
@@ -19,8 +19,7 @@ const TourGuideModal = ({isOpen, closeModal, handleRequest, setStartDate, startD
               >
                 <DialogPanel className="w-full max-w-md rounded-xl  p-6 bg-white text-black">
                   
-                  <TourGuideForm setStartDate={setStartDate} 
-                  startDate={startDate} handleRequest={handleRequest}/>
+                  <TourGuideForm   closeModal={closeModal} handleRequest={handleRequest}/>
                   
                 </DialogPanel>
               </TransitionChild>

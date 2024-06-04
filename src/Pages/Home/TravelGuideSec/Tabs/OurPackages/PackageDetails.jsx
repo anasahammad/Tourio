@@ -28,6 +28,9 @@ const PackageDetails = () => {
     const closeBookingModal = ()=>{
         setOpenModal(false)
     }
+
+
+
     return (
         <div className="">
             <div className="bg-[#EFEEDB] py-6 px-4 text-center">
@@ -98,7 +101,7 @@ const PackageDetails = () => {
                 <div >
                     <button onClick={()=>setOpenModal(true)} className="btn bg-[#18877B] text-white  w-full">Book This Plan</button>
                 </div>
-                    <BookingModal openModal={openModal} closeBookingModal={closeBookingModal}></BookingModal>
+                    <BookingModal item={item} openModal={openModal} closeBookingModal={closeBookingModal}></BookingModal>
                 <div className="px-3 py-4">
                     <h2 className="font-dm-sand text-[17px] font-semibold">Free Cancellation</h2>
                     <p>Up to 24 hours in advance</p>

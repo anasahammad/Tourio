@@ -1,11 +1,74 @@
 import { Button, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import BookingForm from "../Form/BookingForm";
 import { FaCross } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import useAxiosPub from "../../hooks/useAxiosPub";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 
-const BookingModal = ({openModal, closeBookingModal}) => {
+const BookingModal = ({openModal, closeBookingModal, item}) => {
+
+  const {user} = useAuth()
+  const axiosPublic = useAxiosPub()
+  const axiosSecure = useAxiosSecure()
+  const [startDate, setStartDate] = useState(new Date());
+
+  //fetching all tour guides
+  const {data: guides = [], isLoading} = useQuery({
+    queryKey: ['guides'],
+    queryFn: async ()=>{
+      const {data} = await axiosPublic.get('/tour-guides')
+      return data;
+    }
+    
+  })
+
+//post the booking information on db
+const {mutateAsync} = useMutation({
+  mutationFn: async (bookingInfo)=>{
+    const {data} = await axiosSecure.put('/booking', bookingInfo)
+    return data;
+  },
+  onSuccess: ()=>{
+    console.log("Booking added");
+    toast.success("Booking is being confirm! Please Contact with the guide")
+  }, 
+   
+})
+
+
+  const handleBooking = async (e)=>{
+      e.preventDefault()
+      const form = e.target;
+      const guideName = form.guideName.value;
+      const tourDate = startDate
+
+      const bookingInfo = {
+        touristName : user?.displayName,
+        touristEmail: user?.email,
+        touristPhoto: user?.photoURL,
+        price : item?.price,
+        tourDate,
+        guideName,
+        bookingId: item?._id
+
+      }
+      console.log(guideName, tourDate);
+
+      try{
+        await mutateAsync(bookingInfo)
+        closeBookingModal()
+       
+      } catch (error){
+        
+        toast.error(error.message)
+
+      }
+  }
     return (
         <div>
               <Transition appear show={openModal}>
@@ -22,18 +85,25 @@ const BookingModal = ({openModal, closeBookingModal}) => {
               >
                 <DialogPanel className="w-full max-w-md rounded-xl  p-6 backdrop-blur-2xl">
                   <DialogTitle as="h3" className="text-base/7 font-medium text-center">
-                    Tourist Information
+                    Booking Information
                   </DialogTitle>
 
                   <div className="absolute top-5 right-5">
                   <MdCancel  onClick={closeBookingModal} className="text-2xl cursor-pointer text-red-500" />
                   </div>
                   <div>
-                    <h1>Name: Anas</h1>
-                    <p>Email: anas ahammad sarker</p>
-                    <p>Price: Tk 1000</p>
+                    <h1 className="font-bold">{item?.title}</h1>
+                    <h1>Name: {user?.displayName}</h1>
+                    <p>Email: {user?.email}</p>
+                    <p>Price: Tk {item?.price}</p>
+
                   </div>
-                  <BookingForm></BookingForm>
+                  <BookingForm
+                  setStartDate={setStartDate}
+                  startDate={startDate}
+                  guides={guides}
+                  handleBooking={handleBooking}
+                  ></BookingForm>
                   <div className="mt-4">
                    
                   </div>
