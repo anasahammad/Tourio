@@ -28,7 +28,11 @@ const UserDataRows = ({ user, refetch }) => {
   });
 
   const handleModal = async (selected) => {
-    setIsOpen(false);
+    if(loggedUser.email === user?.email){
+      toast.error("You cannot change your role")
+      setIsOpen(false);
+      return
+    }
 
 
     const updateRole = {

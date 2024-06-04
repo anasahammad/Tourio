@@ -1,6 +1,16 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPub from "../../hooks/useAxiosPub";
 
 
 const GuideListTable = () => {
+  const axiosPublic = useAxiosPub()
+  const {data: guides = [], isLoading} = useQuery({
+    queryKey: ['guides'],
+    queryFn: async ()=>{
+      const res = await axiosPublic.get('/tour-guides')
+      return res.data;
+    }
+  })
     return (
         <div className="overflow-x-auto">
         <table className="table">
@@ -17,53 +27,33 @@ const GuideListTable = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
+            {
+              guides.map((guide, idx)=> <tr key={idx}>
               <th>
-               1
+               {idx + 1}
               </th>
               
                 <div className="flex items-center gap-3">
                   <div className="avatar">
                     <div className="mask mask-squircle w-12 h-12">
-                      <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                      <img src={guide?.photo} />
                     </div>
                   </div>
                   
                 </div>
               
               <td>
-                Zemlak, Daniel and Leannon
+                {guide?.name}
                
               </td>
              
               <th>
                 <button className="btn btn-ghost btn-xs">details</button>
               </th>
-            </tr>
-            {/* row 1 */}
-            <tr>
-              <th>
-               1
-              </th>
-              
-                <div className="flex items-center gap-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                    </div>
-                  </div>
-                  
-                </div>
-              
-              <td>
-                Zemlak, Daniel and Leannon
-               
-              </td>
-             
-              <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </th>
-            </tr>
+            </tr>)
+            }
+           
+           
           
            
            
