@@ -12,6 +12,7 @@ import AddPackage from "../Pages/Dashboard/Admin/AddPackage";
 import PackageDetails from "../Pages/Home/TravelGuideSec/Tabs/OurPackages/PackageDetails";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import TourGuideDetails from "../Pages/TourGuides/TourGuideDetails";
+import MyBookings from "../Pages/Dashboard/Tourist/MyBookings";
 
 export const router = createBrowserRouter([ 
     { 
@@ -76,7 +77,16 @@ export const router = createBrowserRouter([
             {
                 path: "manage-users",
                 element: <ManageUsers/>
+            },
+
+
+            //tourist routes
+            {
+                path: 'my-bookings',
+                element: <MyBookings/>
             }
+
+
         ]
       }
    ]); 

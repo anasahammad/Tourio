@@ -8,6 +8,7 @@ import useAxiosPub from "../../hooks/useAxiosPub";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 const BookingModal = ({openModal, closeBookingModal, item}) => {
@@ -16,6 +17,7 @@ const BookingModal = ({openModal, closeBookingModal, item}) => {
   const axiosPublic = useAxiosPub()
   const axiosSecure = useAxiosSecure()
   const [startDate, setStartDate] = useState(new Date());
+  const navigate = useNavigate()
 
   //fetching all tour guides
   const {data: guides = [], isLoading} = useQuery({
@@ -30,19 +32,26 @@ const BookingModal = ({openModal, closeBookingModal, item}) => {
 //post the booking information on db
 const {mutateAsync} = useMutation({
   mutationFn: async (bookingInfo)=>{
-    const {data} = await axiosSecure.put('/booking', bookingInfo)
+    const {data} = await axiosSecure.post('/booking', bookingInfo)
     return data;
   },
-  onSuccess: ()=>{
+  onSuccess: (data)=>{
     console.log("Booking added");
     toast.success("Booking is being confirm! Please Contact with the guide")
   }, 
-   
+   onError : (error)=>{
+    toast.error(error.response?.data?.message || "An error occurred")
+   }
 })
 
 
   const handleBooking = async (e)=>{
       e.preventDefault()
+      if(!user){
+        toast.error("You have to login first")
+        navigate('/login')
+        return
+      }
       const form = e.target;
       const guideName = form.guideName.value;
       const tourDate = startDate
@@ -62,11 +71,11 @@ const {mutateAsync} = useMutation({
       try{
         await mutateAsync(bookingInfo)
         closeBookingModal()
+        navigate('/dashboard/my-bookings')
        
       } catch (error){
-        
-        toast.error(error.message)
-
+        console.log(error.message);
+        // toast.error(error.message)
       }
   }
     return (
