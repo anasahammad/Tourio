@@ -17,9 +17,7 @@ const ManageUsers = () => {
     })
     console.log(users);
     
-    const handleUpdateRole = ()=>{
-        // 
-    }
+   
    
     
     return (

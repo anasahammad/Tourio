@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 
+
 const BookingModal = ({openModal, closeBookingModal, item}) => {
 
   const {user} = useAuth()
@@ -78,6 +79,8 @@ const {mutateAsync} = useMutation({
         // toast.error(error.message)
       }
   }
+
+  // if(isLoading) return <LoadingSpinner/>
     return (
         <div>
               <Transition appear show={openModal}>

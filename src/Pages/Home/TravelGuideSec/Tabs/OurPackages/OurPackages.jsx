@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 import PackageCard from "./PackageCard";
 import { FiArrowUpRight } from "react-icons/fi";
 
+
 const OurPackages = () => {
   const axiosSecure = useAxiosSecure()
 
@@ -14,8 +15,9 @@ const OurPackages = () => {
         return data;
     }
   })
-  if(isLoading) return <p>Loading hocche</p>
-  console.log(packages);
+
+//   if(isLoading) return <LoadingSpinner/>
+  
     return (
         <div className="px-6">
            

@@ -3,6 +3,7 @@ import useAxiosPub from "../../hooks/useAxiosPub";
 import { Link } from "react-router-dom";
 
 
+
 const GuideListTable = () => {
   const axiosPublic = useAxiosPub()
   const {data: guides = [], isLoading} = useQuery({
@@ -12,6 +13,7 @@ const GuideListTable = () => {
       return res.data;
     }
   })
+  // if(isLoading) return <LoadingSpinner/>
     return (
         <div className="overflow-x-auto">
         <table className="table">

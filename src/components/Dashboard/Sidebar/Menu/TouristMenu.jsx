@@ -13,7 +13,7 @@ const TouristMenu = () => {
            
         </MenuItem>
         <MenuItem label="MY Wishlist"
-            route="/my-wishlist"
+            route="my-wishlist"
             icon={FaRegHeart}>
             
         </MenuItem>
