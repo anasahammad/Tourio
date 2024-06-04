@@ -44,7 +44,7 @@ const Sidebar = () => {
           role : 'tourist',
           status: 'requested'
         }
-      const {data} =   await axiosSecure.patch(`/users/update/${user?.email}`, guide)
+      const {data} =   await axiosSecure.put(`/user`, guide)
         console.log(data);
         if(data.modifiedCount > 0){
           toast.success("Request Sent to the admin. Please wait for the response")
