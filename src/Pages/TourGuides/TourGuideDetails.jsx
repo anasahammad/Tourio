@@ -1,10 +1,42 @@
 import { RiLayoutGrid2Fill } from "react-icons/ri";
 import { useLoaderData, useNavigate } from "react-router-dom";
-
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure"
+import toast from "react-hot-toast";
 const TourGuideDetails = () => {
   const user = useLoaderData();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure()
   console.log(user);
+  const {user: tourist} = useAuth()
+
+  const handleContact = async (e)=>{
+    e.preventDefault()
+    const form = e.target;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const touristEmail = tourist.email;
+    const telephone = form.telephone.value;
+    const message = form.message.value;
+
+    const touristMessage = {
+        firstName, lastName, touristEmail, telephone, message,
+        guideEmail:user?.email
+    }
+
+    try {
+      const res =   await axiosSecure.post('/contact', touristMessage)
+
+      if(res.status === 200){
+        console.log(res.data.message);
+        toast.success(res.data.message)
+      }
+    } catch (error) {
+        toast.error(error.message);
+    }
+    
+    
+  }
   return (
     <div className="container mx-auto font-dm-sans">
       <div
@@ -61,7 +93,7 @@ const TourGuideDetails = () => {
                     <h1 className="text-2xl font-bold">Contact this tourist-guide</h1>
 
                     <div className="card shrink-0  ">
-      <form className="card-body">
+      <form onSubmit={handleContact} className="card-body">
         <div className="form-control">
          
           <input name="firstName"  type="text" placeholder="First name*" className="input rounded-none  focus:outline-none bg-[#ECEEEF]" required />
@@ -72,7 +104,7 @@ const TourGuideDetails = () => {
         </div>
         <div className="form-control">
          
-          <input name="email"  type="email" placeholder="Email address*" className="input rounded-none  focus:outline-none bg-[#ECEEEF]" required />
+          <input name="email" defaultValue={tourist?.email} type="email" placeholder="Email address*" className="input rounded-none  focus:outline-none bg-[#ECEEEF]" required />
         </div>
         <div className="form-control">
          
@@ -80,11 +112,11 @@ const TourGuideDetails = () => {
         </div>
         <div className="form-control">
          
-          <textarea name="telephone" rows={4}  type="tel" placeholder="Please enter your message*" className="textarea rounded-none  focus:outline-none bg-[#ECEEEF]" required />
+          <textarea  name="message" rows={4}  type="tel" placeholder="Please enter your message*" className="textarea rounded-none  focus:outline-none bg-[#ECEEEF]" required />
         </div>
        
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn bg-[#017b6e] text-white">Send</button>
         </div>
       </form>
     </div>
