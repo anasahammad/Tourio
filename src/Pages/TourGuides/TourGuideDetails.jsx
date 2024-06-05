@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure"
 import toast from "react-hot-toast";
+import ReviewsSection from "./ReviewsSection";
 const TourGuideDetails = () => {
   const user = useLoaderData();
   const navigate = useNavigate();
@@ -88,6 +89,9 @@ const TourGuideDetails = () => {
 
                 <p className="mt-4 ">{user?.about}</p>
             </div>
+
+            {/* Review Section */}
+            <ReviewsSection/>
         </div>
             <div className="w-1/3 md:px-6 ">
                 <div className="border-b">
@@ -130,6 +134,8 @@ const TourGuideDetails = () => {
       </form>
     </div>
                 </div>
+
+                
             </div>
       </div>
     </div>

@@ -14,6 +14,7 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import TourGuideDetails from "../Pages/TourGuides/TourGuideDetails";
 import MyBookings from "../Pages/Dashboard/Tourist/MyBookings";
 import MyWishList from "../Pages/Dashboard/Tourist/MyWishList";
+import MyProfile from "../Pages/Dashboard/Common/MyProfile";
 
 export const router = createBrowserRouter([ 
     { 
@@ -89,8 +90,12 @@ export const router = createBrowserRouter([
             {
                 path: 'my-wishlist',
                 element: <MyWishList/>
+            },
+            //my profile
+            {
+                path: 'my-profile',
+                element: <MyProfile/>
             }
-
 
         ]
       }

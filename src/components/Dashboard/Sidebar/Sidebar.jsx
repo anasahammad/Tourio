@@ -59,12 +59,12 @@ const Sidebar = () => {
           photo: user?.photoURL,
           role : 'tourist',
           status: 'requested',
-          education,
-           hobby, 
-           number, 
-           language,
-            birthday ,
-            about
+          // education,
+          //  hobby, 
+          //  number, 
+          //  language,
+          //   birthday ,
+          //   about
         }
       const {data} =   await axiosSecure.put(`/user`, guide)
         console.log(data);
