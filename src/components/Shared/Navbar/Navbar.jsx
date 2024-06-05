@@ -102,7 +102,7 @@ const Navbar = () => {
                                 <p className="text-sm text-gray-500">{user?.email}</p>
                             </div>
                             <div className="py-1">
-                                <Link to="/dashboard"
+                                <Link to="/dashboard/my-profile"
                                     
                                     className="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 hover:bg-gray-100"
                                 >
@@ -147,7 +147,7 @@ const Navbar = () => {
                                         <p className="text-sm text-gray-500">{user?.email}</p>
                                     </div>
                                     <div className="py-1">
-                                        <Link to="/dashboard"
+                                        <Link to="/dashboard/my-profile"
                                            
                                             className="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 hover:bg-gray-100"
                                         >

@@ -71,6 +71,10 @@ export const router = createBrowserRouter([
         element: <DashboardLayout/>,
         children: [
             {
+                path: "my-profile",
+                element: <MyProfile/>
+            },
+            {
                 path: "add-package",
                 element: <AddPackage/>
             },
@@ -92,10 +96,10 @@ export const router = createBrowserRouter([
                 element: <MyWishList/>
             },
             //my profile
-            {
-                path: 'my-profile',
-                element: <MyProfile/>
-            }
+            // {
+            //     path: 'my-profile',
+            //     element: <MyProfile/>
+            // }
 
         ]
       }
