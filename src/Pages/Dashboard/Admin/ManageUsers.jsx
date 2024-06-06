@@ -23,7 +23,7 @@ const ManageUsers = () => {
     return (
         
         <div>
-            <h1>This is manage users route</h1>
+            
                
 
             <section className="container px-4 mx-auto">

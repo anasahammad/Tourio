@@ -1,4 +1,4 @@
-const MyBookingsForm = ({ booking }) => {
+const MyBookingsForm = ({ booking, handleCancel }) => {
   return (
     <tr>
       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -36,7 +36,9 @@ guideName}
 
       <td className="px-4 py-4 text-sm whitespace-nowrap">
         <div className="flex items-center gap-x-2">
-          <button className={`px-3 py-1 text-xs text-red-400 rounded-full dark:bg-gray-800 bg-red-100/60 ${booking?.status !== 'In Review'  && 'hidden' }`}>
+          <button 
+            onClick={()=> handleCancel(booking?._id)}
+           className={`px-3 py-1 text-xs text-red-400 rounded-full dark:bg-gray-800 bg-red-100/60 ${booking?.status !== 'In Review'  && 'hidden' }`}>
             Cancel
           </button>
           <button className={`px-3 py-1 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60 ${booking?.status !== 'Accepted' && 'hidden'}`}>

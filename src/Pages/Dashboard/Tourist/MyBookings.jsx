@@ -6,6 +6,7 @@ import MyBookingsForm from "../../../components/Form/MyBookingsForm";
 import noDataAnimation from "../../../../public/No-data-animation.json"
 import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
@@ -18,7 +19,20 @@ const MyBookings = () => {
     },
   });
 
-  
+  const handleCancel = async (id) =>{
+    try{
+      const res = await axiosSecure.delete(`/delete-booking/${id}`)
+      console.log(res.data);
+      if(res.data.deletedCount > 0){
+        toast.success("Booking has been canceled")
+        refetch()
+      }
+    }
+    catch (err){
+      console.log(err.message);
+      toast.error(err.message)
+    }
+  }
   console.log(myBookings);
   if(isLoading || loading) return <p>Loading Hocche</p>
   return (
@@ -95,6 +109,7 @@ const MyBookings = () => {
                        {myBookings?.map((booking) => (
                          <MyBookingsForm
                            key={booking.bookingId}
+                           handleCancel={handleCancel}
                            booking={booking}
                          />
                        ))}
