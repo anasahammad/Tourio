@@ -19,7 +19,7 @@ const MyBookings = () => {
 
 
   const { data: myBookings = [], refetch, isLoading } = useQuery({
-    queryKey: ["myBookings"],
+    queryKey: ["myBookings", currentPage, itemsPerPage],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/booking/${user?.email}?page=${currentPage}&size=${itemsPerPage}`);
       return data;
