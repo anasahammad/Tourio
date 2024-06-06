@@ -17,6 +17,8 @@ const MyBookings = () => {
       return data;
     },
   });
+
+  
   console.log(myBookings);
   if(isLoading || loading) return <p>Loading Hocche</p>
   return (
@@ -83,7 +85,7 @@ const MyBookings = () => {
    
                          <th
                            scope="col"
-                           className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                           className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right  dark:text-gray-400"
                          >
                            Actions
                          </th>

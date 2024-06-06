@@ -15,6 +15,7 @@ import TourGuideDetails from "../Pages/TourGuides/TourGuideDetails";
 import MyBookings from "../Pages/Dashboard/Tourist/MyBookings";
 import MyWishList from "../Pages/Dashboard/Tourist/MyWishList";
 import MyProfile from "../Pages/Dashboard/Common/MyProfile";
+import MyAssignTour from "../Pages/Dashboard/TourGuide/MyAssignTour";
 
 export const router = createBrowserRouter([ 
     { 
@@ -96,11 +97,12 @@ export const router = createBrowserRouter([
                 path: 'my-wishlist',
                 element: <MyWishList/>
             },
-            //my profile
-            // {
-            //     path: 'my-profile',
-            //     element: <MyProfile/>
-            // }
+           
+            //tour guide route
+            {
+                path: 'assign-tour',
+                element: <MyAssignTour/>
+            }
 
         ]
       }

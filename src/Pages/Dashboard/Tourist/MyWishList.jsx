@@ -84,13 +84,15 @@ if(loading || isLoading) return <p>Loading hocche</p>
             ))}
           </tbody>
         </table>
-      </div>) : <div className="w-80 mx-auto flex flex-col justify-center items-center 3">
+      </div>) : <>
+      {isLoading &&  <div className="w-80 mx-auto flex flex-col justify-center items-center 3">
         <Lottie className=" " loop={true} animationData={noDataAnimation} />
        
         <Link to="/">
            <button className="px-8 btn bg-[#017b6e] mb-4 text-white py-3 font-semibold rounded  ">Back to Home Page</button>
         </Link>
-   </div>
+   </div> }
+      </> 
     }
 
 </div>

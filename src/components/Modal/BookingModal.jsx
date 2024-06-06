@@ -55,7 +55,10 @@ const {mutateAsync} = useMutation({
       }
       const form = e.target;
       const guideName = form.guideName.value;
+      const selectedOption = guides?.find(guide=> guide.name === guideName)
+      const guideEmail = selectedOption.email;
       const tourDate = startDate
+     
 
       const bookingInfo = {
         touristName : user?.displayName,
@@ -64,6 +67,7 @@ const {mutateAsync} = useMutation({
         price : item?.price,
         tourDate,
         guideName,
+        guideEmail,
         packageName: item?.title,
         bookingId: item?._id,
         status: 'In Review'

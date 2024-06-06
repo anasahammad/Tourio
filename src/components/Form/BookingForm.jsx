@@ -24,7 +24,7 @@ const BookingForm = ({guides, startDate, setStartDate,handleBooking }) => {
               name='guideName'
             >
               {guides?.map(guide => (
-                <option value={guide.name} key={guide.name}>
+                <option value={guide.name} key={guide.name} data-email={guide.email}>
                   {guide.name}
                 </option>
               ))}
