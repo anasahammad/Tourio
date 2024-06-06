@@ -64,7 +64,9 @@ const {mutateAsync} = useMutation({
         price : item?.price,
         tourDate,
         guideName,
-        bookingId: item?._id
+        packageName: item?.title,
+        bookingId: item?._id,
+        status: 'In Review'
 
       }
       console.log(guideName, tourDate);
