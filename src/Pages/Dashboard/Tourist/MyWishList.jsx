@@ -3,12 +3,13 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-
+import Lottie from "lottie-react";
+import noDataAnimation from "../../../../public/No-data-animation.json"
 
 const MyWishList = () => {
-    const {user} = useAuth()
+    const {user, loading} = useAuth()
     const axiosSecure = useAxiosSecure()
-    const {data: wishlist = [], refetch  } = useQuery({
+    const {data: wishlist = [], refetch, isLoading  } = useQuery({
         queryKey: ['wishlist'],
         queryFn: async ()=>{
             const {data} = await axiosSecure.get(`/wishlist/${user?.email}`)
@@ -33,58 +34,64 @@ const MyWishList = () => {
         }
     }
     
+if(loading || isLoading) return <p>Loading hocche</p>
+
     return (
+<div>
 
-        <div className="my-6">
-
-            <div className="flex flex-col gap-6">
-            {
-                wishlist.map(item=> <div key={item.wishlistId} className="flex  overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-               <img src={item.photo} className="w-[300px]" alt="" />
-            
-                <div className="w-2/3 p-4 md:p-4">
-                    <h1 className="text-xl font-bold text-gray-800 dark:text-white">{item.title || "Tour Plan Title"}</h1>
-            
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{item.shortDescription}</p>
-            
-                    <div className="flex mt-2 item-center">
-                        <svg className="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                        </svg>
-            
-                        <svg className="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                        </svg>
-            
-                        <svg className="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                        </svg>
-            
-                        <svg className="w-5 h-5 text-gray-500 fill-current" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                        </svg>
-            
-                        <svg className="w-5 h-5 text-gray-500 fill-current" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                        </svg>
-                    </div>
-            
-                    <div className="flex justify-between mt-3 item-center">
-                        <h1 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">Tk {item?.price}</h1>
-
-                       <Link to={`/package-details/${item.wishlistId}`}>
-                       <button className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Visit Details</button>
-                       </Link>
-                        <button 
-                        onClick={()=> handleDelete(item?._id)}
-                        className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Delete</button>
-                    </div>
-                </div>
-            </div>)
-            }
-        
-            </div>
-           
+    {
+        wishlist?.length > 0 ? (<div className="overflow-x-auto">
+        <table className="min-w-full bg-white border  border-gray-200">
+          <thead className="bg-[#017b6e] text-white ">
+            <tr className="text-sm g">
+              <th className="px-4 py-4 border-b ">Package Photo</th>
+              <th className="px-4 py-4 border-b">Package Name</th>
+              <th className="px-4 py-4 border-b">Package Destination</th>
+              <th className="px-4 py-4 border-b">Package Price</th>
+              <th className="px-4 py-4 border-b">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {wishlist.map(item => (
+              <tr key={item?._id}>
+                <td className="px-4 py-2 border-b">
+                  <img src={item?.photo} alt={item?.name} className="w-18 h-16 object-cover rounded" />
+                </td>
+                <td className="px-4 py-2 border-b">{item?.title}</td>
+                <td className="px-4 py-2 border-b">{item?.destination}</td>
+                <td className="px-4 py-2 border-b">Tk -{item?.price}</td>
+                <td className="px-4 py-2 border-b ">
+                  <div className="flex">
+                  <button
+                    onClick={() => handleDelete(item?._id)}
+                    className="px-3 py-1 text-xs text-red-400 rounded-full dark:bg-gray-800 bg-red-100/60 mr-2"
+                  >
+                    Delete
+                  </button>
+                  <Link to={`/package-details/${item?.wishlistId}`}>
+                  <button
+                    
+                    className="px-3 py-1 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60"
+                  >
+                     Details
+                  </button>
+                  </Link>
+                  
+                  </div>
+                  
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>) : <div className="w-80 mx-auto flex flex-col justify-center items-center 3">
+        <Lottie className=" " loop={true} animationData={noDataAnimation} />
+       
+        <Link to="/">
+           <button className="px-8 btn bg-[#017b6e] mb-4 text-white py-3 font-semibold rounded  ">Back to Home Page</button>
+        </Link>
+   </div>
+    }
 
 </div>
     );
