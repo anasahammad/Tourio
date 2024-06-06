@@ -92,7 +92,8 @@ export const router = createBrowserRouter([
             //tourist routes
             {
                 path: 'my-bookings',
-                element: <MyBookings/>
+                element: <MyBookings/>,
+               
             },
             {
                 path: 'my-wishlist',
