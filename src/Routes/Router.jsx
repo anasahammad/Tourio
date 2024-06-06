@@ -73,6 +73,7 @@ export const router = createBrowserRouter([
             {
                 path: "my-profile",
                 element: <MyProfile/>
+                
             },
             {
                 path: "add-package",

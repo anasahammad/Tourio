@@ -59,12 +59,12 @@ const Sidebar = () => {
           photo: user?.photoURL,
           role : 'tourist',
           status: 'requested',
-          // education,
-          //  hobby, 
-          //  number, 
-          //  language,
-          //   birthday ,
-          //   about
+          education,
+           hobby, 
+           number, 
+           language,
+            birthday ,
+            about
         }
       const {data} =   await axiosSecure.put(`/user`, guide)
         console.log(data);
@@ -83,7 +83,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
+      <div className='bg-[#18877b] text-white text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Link to='/'>
@@ -108,17 +108,17 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#18877b] text-white w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && '-translate-x-full'
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto'>
+            <div className='w-full hidden md:flex px-4 py-2 rounded-lg justify-center items-center  mx-auto'>
               <Link to='/'>
                 <img
                   // className='hidden md:block'
-                  src='https://i.ibb.co/4ZXzmq5/logo.png'
+                  // src='https://i.ibb.co/4ZXzmq5/logo.png'
                   alt='logo'
                   width='100'
                   height='100'
@@ -128,7 +128,7 @@ const Sidebar = () => {
           </div>
 
           {/* Nav Items */}
-          <div className='flex flex-col justify-between flex-1 mt-6'>
+          <div className='flex e flex-col justify-between flex-1 mt-6'>
     
             {/*  Menu Items */}
             <nav>
@@ -146,7 +146,7 @@ const Sidebar = () => {
             
             {
               role === 'tourist' &&   <div className='flex items-center px-4 py-2 my-5 '>
-              <button onClick={()=>setIsOpen(true)} className='text-gray-700 font-bold flex gap-3 items-center '> 
+              <button onClick={()=>setIsOpen(true)} className='text-white font-bold flex gap-3 items-center '> 
               <FaPaperPlane/>  Request to Admin</button>
 
               <TourGuideModal 

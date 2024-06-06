@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure"
 import toast from "react-hot-toast";
 import ReviewsSection from "./ReviewsSection";
+
 const TourGuideDetails = () => {
   const user = useLoaderData();
   const navigate = useNavigate();

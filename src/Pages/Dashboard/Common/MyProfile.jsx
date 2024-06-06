@@ -5,6 +5,7 @@ import StoryForm from "../../../components/Form/StoryForm";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import GuideForm from "../../../components/Form/GuideForm";
 
 const MyProfile = () => {
     const {user} = useAuth()
@@ -53,6 +54,13 @@ const MyProfile = () => {
         <div>
             {
                 role === 'tourist' && (<StoryForm handleStory={handleStory}/>)
+            }
+        </div>
+        <div>
+            {
+                role === 'guide' && (<GuideForm 
+                    user={user}
+                    handleStory={handleStory}/>)
             }
         </div>
     </div>
