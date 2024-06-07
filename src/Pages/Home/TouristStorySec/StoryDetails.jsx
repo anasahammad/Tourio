@@ -13,12 +13,12 @@ const StoryDetails = () => {
             </div>
 
 
-            <div className="container flex flex-col md:flex-row justify-between g  mx-auto my-10">
+            <div className="container flex flex-col md:flex-row justify-between px-4 md:px-0  mx-auto my-10">
                 <div>
                     <StoryDetailsInformation story={story}/>
                 </div>
                 <div>
-                <div className="flex h-[450px] md:w-full mb-8 sm:px-4  ">
+                <div className="flex  md:h-[450px] mx-auto md:w-full mb-8 sm:px-4  ">
 				<div className="flex flex-grow justify-center flex-col p-6 space-y-4  rounded shadow sm:p-8 bg-[#18877b]">
 					<div className="space-y-6  py-10 ">
 						<h4 className="text-2xl text-[#f37b63]  font-medium ">20% Off</h4>

@@ -1,8 +1,12 @@
+import ShareButtons from "../ShareButton/ShareButtons";
 import StoryImageCarosel from "./ImageCarosel/StoryImageCarosel";
 
 
 
 const StoryDetailsInformation = ({story}) => {
+
+    const url = window.location.href; 
+  const title = story?.title;
     return (
         <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
     
@@ -10,13 +14,21 @@ const StoryDetailsInformation = ({story}) => {
        <StoryImageCarosel  story={story} />
             
        <div className="mt-4 px-6">
-                <div className="flex items-center">
-                    <div className="flex items-center">
+                <div className="flex items-center ">
+                    <div className="flex items-center ">
                         <img className="object-cover h-10 rounded-full" src={story?.authorImage} alt="Avatar"/>
                         <a href="#" className="mx-2 font-semibold text-gray-700 dark:text-gray-200" tabIndex="0" role="link">{story?.author}</a>
                     </div>
                     <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">{story?.date}</span>
+
+                   
                 </div>
+
+                    <div className="mt-4">
+
+                <ShareButtons url={url} title={title} />
+                    </div>
+
             </div>
     
         <div className="p-6">
