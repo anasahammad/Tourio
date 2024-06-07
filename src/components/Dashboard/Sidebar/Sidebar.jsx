@@ -21,6 +21,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import TourGuideModal from '../../Modal/TourGuideModal'
+import LoadingSpinner from '../../LoadingSpinner'
 
 const Sidebar = () => {
   const { user } = useAuth()
@@ -38,7 +39,7 @@ const Sidebar = () => {
     setActive(!isActive)
   }
   console.log(role);
-  if(isLoading) return <p>Loading hocche</p>
+  if(isLoading) return <LoadingSpinner/>
 
 
  

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPub from "../../hooks/useAxiosPub";
 import { Link } from "react-router-dom";
+import LoadingSpinner from "../LoadingSpinner";
 
 
 
@@ -13,7 +14,7 @@ const GuideListTable = () => {
       return res.data;
     }
   })
-  // if(isLoading) return <LoadingSpinner/>
+  if(isLoading) return <LoadingSpinner/>
     return (
         <div className="overflow-x-auto">
         <table className="table">

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPub from "../../../../hooks/useAxiosPub";
 import { Link } from "react-router-dom";
+import LoadingSpinner from "../../../../components/LoadingSpinner";
 
 
 const MeetTourGuide = () => {
@@ -12,6 +13,8 @@ const MeetTourGuide = () => {
         return res.data;
       }
     })
+
+    if(isLoading) return <LoadingSpinner/>
     return (
         <div className="my-6">
             <div className="overflow-x-auto">

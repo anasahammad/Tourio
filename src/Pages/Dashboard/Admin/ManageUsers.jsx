@@ -2,7 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import UserDataRows from "../../../components/Table/UserDataRows";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../../../components/LoadingSpinner";
+import useAuth from "../../../hooks/useAuth";
 
 
 
@@ -11,6 +13,7 @@ import { useState } from "react";
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure()
    const {count} = useLoaderData()
+   const {loading,setLoading} = useAuth()
   const itemsPerPage = 10;
    const [currentPage, setCurrentPage] = useState(1)
    const numberOfPage = Math.ceil(count / itemsPerPage)
@@ -33,7 +36,7 @@ const handleNext = ()=>{
         setCurrentPage(currentPage + 1)
     }
 }
-    const {data: users = [], refetch, isLoading, isPending} =useQuery({
+    const {data: users = [], refetch, isLoading, isPending} = useQuery({
         queryKey: ['users', currentPage,itemsPerPage ],
         queryFn: async ()=>{
             const res = await axiosSecure.get(`/users?page=${currentPage}&size=${itemsPerPage}&search=${search}&filter=${filter}`)
@@ -41,12 +44,14 @@ const handleNext = ()=>{
         }
     })
    
-    if(isLoading || isPending) return <p>Loading hocche...</p>
-   
+    useEffect(()=>{
+        refetch()
+      }, [currentPage, itemsPerPage, refetch, filter, search])
    const handleSearch = (e)=>{
     e.preventDefault()
     setSearch(searchText)
     setCurrentPage(1)
+   
     
   
    }
@@ -56,8 +61,12 @@ const handleNext = ()=>{
    
 
    const handleSelect = (e) =>{
+   
     setFilter(e.target.value)
    }
+   
+
+   if(isPending || isLoading  ) return <LoadingSpinner/>
    
     return (
         

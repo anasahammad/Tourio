@@ -1,18 +1,11 @@
-import { RotatingSquare } from "react-loader-spinner";
+import { GridLoader } from "react-spinners";
+
 
 
 const LoadingSpinner = () => {
     return (
-        <div className="flex justify-center items-center">
-            <RotatingSquare
-  visible={true}
-  height="100"
-  width="100"
-  color="#4fa94d"
-  ariaLabel="rotating-square-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  />
+        <div className="flex flex-col justify-center min-h-screen items-center">
+            <GridLoader color="#36d7b7" />
         </div>
     );
 };

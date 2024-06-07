@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import LoadingSpinner from "../LoadingSpinner";
 
 const GuideForm = ({ user }) => {
     const { updateUserProfile} = useAuth()
@@ -76,7 +77,7 @@ const {mutateAsync} = useMutation({
     console.log(updateInfo);
   }
 
-  console.log(guide);
+if(isLoading) return <LoadingSpinner/>
 
   return (
     <div>

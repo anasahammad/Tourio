@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Lottie from "lottie-react";
 import noDataAnimation from "../../../../public/No-data-animation.json";
 import { useEffect, useState } from "react";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const MyWishList = () => {
   const { user, loading } = useAuth();
@@ -73,7 +74,7 @@ const MyWishList = () => {
     }
   };
 
-  if (loading || isLoading) return <p>Loading hocche</p>;
+  if (loading || isLoading) return <LoadingSpinner/>
 
   return (
     <div>

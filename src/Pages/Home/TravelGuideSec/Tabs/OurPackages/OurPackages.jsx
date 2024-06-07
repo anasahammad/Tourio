@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 import PackageCard from "./PackageCard";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import LoadingSpinner from "../../../../../components/LoadingSpinner";
 
 
 const OurPackages = () => {
@@ -17,7 +18,7 @@ const OurPackages = () => {
     }
   })
 
-//   if(isLoading) return <LoadingSpinner/>
+  if(isLoading) return <LoadingSpinner/>
   
     return (
         <div className="px-6">

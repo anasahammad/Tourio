@@ -8,6 +8,7 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 const MyBookings = () => {
   const axiosSecure = useAxiosSecure();
@@ -74,7 +75,7 @@ const handleNext = ()=>{
         setCurrentPage(currentPage + 1)
     }
 }
-  if(isLoading || loading) return <p>Loading Hocche</p>
+  if(isLoading || loading) return <LoadingSpinner/>
   return (
     <div>
 

@@ -9,6 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../LoadingSpinner";
 
 
 
@@ -86,7 +87,7 @@ const {mutateAsync} = useMutation({
       }
   }
 
-  // if(isLoading) return <LoadingSpinner/>
+  if(isLoading) return <LoadingSpinner/>
     return (
         <div>
               <Transition appear show={openModal}>
