@@ -21,9 +21,9 @@ const TouristStory = () => {
                 <h4 className="font-kaushan-script text-2xl text-[#F26F73]">Journey Chronicles</h4>
                 <h1 className="text-2xl font-bold font-dm-sans  md:text-4xl"> Tales from Our Travelers</h1>
             </div>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
                 {
-                    stories?.slice(0, 4).map(story=> <StoryCard  story={story} key={story._id}/>)
+                    stories?.slice(0, 3).map(story=> <StoryCard  story={story} key={story._id}/>)
                 }
             </div>
             {

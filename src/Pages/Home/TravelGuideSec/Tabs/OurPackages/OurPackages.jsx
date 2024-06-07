@@ -29,7 +29,7 @@ const OurPackages = () => {
                 }
             </div>
                 {
-                    packages.length > 3 && <div className="flex justify-center my-4">
+                    packages.length > 2 && <div className="flex justify-center my-4">
                         <Link to={`/all-package`}>
                         <button className="btn bg-[#18877B] text-white text-xl rounded-3xl">All Packages <FiArrowUpRight/></button>
                         </Link>

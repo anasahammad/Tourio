@@ -18,6 +18,7 @@ import MyProfile from "../Pages/Dashboard/Common/MyProfile";
 import MyAssignTour from "../Pages/Dashboard/TourGuide/MyAssignTour";
 import StoryDetails from "../Pages/Home/TouristStorySec/StoryDetails";
 import AllStories from "../Pages/Home/TouristStorySec/AllStories";
+import AllPackages from "../Pages/Home/TravelGuideSec/Tabs/OurPackages/AllPackages";
 
 export const router = createBrowserRouter([ 
     { 
@@ -58,6 +59,11 @@ export const router = createBrowserRouter([
          {
             path: "/all-stories",
             element: <AllStories/>,
+          
+        },
+         {
+            path: "/all-package",
+            element: <AllPackages/>,
           
         },
          {
