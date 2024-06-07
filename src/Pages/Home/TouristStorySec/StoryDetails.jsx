@@ -13,9 +13,25 @@ const StoryDetails = () => {
             </div>
 
 
-            <div className="container mx-auto my-10">
+            <div className="container flex flex-col md:flex-row justify-between g  mx-auto my-10">
                 <div>
                     <StoryDetailsInformation story={story}/>
+                </div>
+                <div>
+                <div className="flex h-[450px] md:w-full mb-8 sm:px-4  ">
+				<div className="flex flex-grow justify-center flex-col p-6 space-y-4  rounded shadow sm:p-8 bg-[#18877b]">
+					<div className="space-y-6  py-10 ">
+						<h4 className="text-2xl text-[#f37b63]  font-medium ">20% Off</h4>
+						<span className="text-4xl text-white font-bold font-dm-sans ">The Best Travel Adventure
+							
+						</span>
+					</div>
+					
+                    <div className="flex justify-center">
+                        <button className="btn rounded-3xl bg-[#f37b63] hover:bg-white hover:text-[#f37b63]">Booking Now</button>
+                    </div>
+				</div>
+			</div>
                 </div>
             </div>
         </div>

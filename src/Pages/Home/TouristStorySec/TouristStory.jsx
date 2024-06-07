@@ -21,7 +21,7 @@ const TouristStory = () => {
             </div>
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
                 {
-                    stories?.map(story=> <StoryCard story={story} key={story._id}/>)
+                    stories?.map(story=> <StoryCard  story={story} key={story._id}/>)
                 }
             </div>
            

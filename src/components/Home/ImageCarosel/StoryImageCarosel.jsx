@@ -16,7 +16,7 @@ const StoryImageCarosel = ({story}) => {
         <Slider {...settings}>
             {story?.storyImages.map((image, index) => (
                 <div key={index}>
-                    <img src={image} className="w-full h-[400px]" alt={`Story ${index + 1}`} />
+                    <img src={image} className="w-full h-[250px] md:h-[400px]" alt={`Story ${index + 1}`} />
                 </div>
             ))}
         </Slider>
