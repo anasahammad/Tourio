@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import ShareButtons from "../ShareButton/ShareButtons";
 import StoryImageCarosel from "./ImageCarosel/StoryImageCarosel";
 
 
 
 const StoryDetailsInformation = ({story}) => {
-
+    const {user} = useAuth()
     const url = window.location.href; 
   const title = story?.title;
     return (
@@ -25,8 +27,12 @@ const StoryDetailsInformation = ({story}) => {
                 </div>
 
                     <div className="mt-4">
-
-                <ShareButtons url={url} title={title} />
+              
+                    {user ? (
+            <ShareButtons url={url} title={title} />
+          ) : (
+            <Link to="/login" className="hover:underline ">Log in to share this story</Link>
+          )}
                     </div>
 
             </div>

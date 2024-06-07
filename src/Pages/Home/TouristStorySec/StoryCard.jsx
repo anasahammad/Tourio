@@ -17,7 +17,7 @@ const StoryCard = ({story}) => {
 		<img src={story?.storyImages[0]} alt="" className="object-cover w-full mb-4 h-24 sm:h-96 " />
 		
 		<h2 className="mb-1 text-xl font-semibold px-4">{story?.title}</h2>
-		<p className="text-sm dark:text-gray-600 px-4">{story?.description.slice(0, 80)}</p>
+		<p className="text-sm dark:text-gray-600 px-4">{story?.description}</p>
 	</div>
 	<div className="flex flex-wrap px-4 justify-between">
 		<div className="space-x-2">
