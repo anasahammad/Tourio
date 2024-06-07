@@ -7,6 +7,7 @@ import { useState } from "react";
 
 
 
+
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure()
    const {count} = useLoaderData()
@@ -15,6 +16,7 @@ const ManageUsers = () => {
    const numberOfPage = Math.ceil(count / itemsPerPage)
    const [search, setSearch] = useState('')
    const [searchText, setSearchText] = useState('')
+   const [filter, setFilter] = useState('')
   
 
 const pages = [...Array(numberOfPage).keys()]
@@ -34,12 +36,12 @@ const handleNext = ()=>{
     const {data: users = [], refetch, isLoading, isPending} =useQuery({
         queryKey: ['users', currentPage,itemsPerPage ],
         queryFn: async ()=>{
-            const res = await axiosSecure.get(`/users?page=${currentPage}&size=${itemsPerPage}&search=${search}`)
+            const res = await axiosSecure.get(`/users?page=${currentPage}&size=${itemsPerPage}&search=${search}&filter=${filter}`)
             return res.data;
         }
     })
    
-    
+    if(isLoading || isPending) return <p>Loading hocche...</p>
    
    const handleSearch = (e)=>{
     e.preventDefault()
@@ -49,8 +51,14 @@ const handleNext = ()=>{
   
    }
 
-   console.log(searchText);
-    if(isLoading || isPending) return <p>Loading hocche...</p>
+   
+   //for filter method
+   
+
+   const handleSelect = (e) =>{
+    setFilter(e.target.value)
+   }
+   
     return (
         
         <div>
@@ -66,19 +74,14 @@ const handleNext = ()=>{
 
 
     <div className="mt-6 md:flex md:items-center md:justify-between">
-        <div className="inline-flex overflow-hidden bg-white border divide-x rounded-lg dark:bg-gray-900 rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
-            <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 bg-gray-100 sm:text-sm dark:bg-gray-800 dark:text-gray-300">
-                View all
-            </button>
-
-            <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
-                Monitored
-            </button>
-
-            <button className="px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
-                Unmonitored
-            </button>
-        </div>
+        <div className="md:w-2/5">
+      <select value={filter} onChange={handleSelect} name="" id="" className="w-full border px-3 py-2 rounded-lg">
+        <option disabled value="" selected>Filter by role</option>
+        <option value="admin">Admin</option>
+        <option value="tourist">Tourist</option>
+        <option value="guide">Guide</option>
+      </select>
+    </div>
 
         <form onSubmit={handleSearch} className="relative flex items-center mt-4 md:mt-0">
             <button type="submit" className="absolute">
@@ -90,7 +93,7 @@ const handleNext = ()=>{
             <input 
                 onChange={(e)=>setSearchText(e.target.value)}
                 value={searchText}
-            type="text" placeholder="Search" className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
+            type="text" placeholder="Search Name or Email" className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
         </form>
     </div>
 
