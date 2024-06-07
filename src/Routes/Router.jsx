@@ -16,6 +16,7 @@ import MyBookings from "../Pages/Dashboard/Tourist/MyBookings";
 import MyWishList from "../Pages/Dashboard/Tourist/MyWishList";
 import MyProfile from "../Pages/Dashboard/Common/MyProfile";
 import MyAssignTour from "../Pages/Dashboard/TourGuide/MyAssignTour";
+import StoryDetails from "../Pages/Home/TouristStorySec/StoryDetails";
 
 export const router = createBrowserRouter([ 
     { 
@@ -47,6 +48,11 @@ export const router = createBrowserRouter([
             path: "/package-details/:id",
             element: <PackageDetails/>,
             loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.id}`)
+        },
+         {
+            path: "/story-details/:id",
+            element: <StoryDetails/>,
+            loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/story/${params.id}`)
         },
          {
             path: "/guide-details/:email",

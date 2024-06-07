@@ -66,7 +66,7 @@ const StoryForm = ({handleStory, handleImage}) => {
         
         <button 
           type="submit" 
-          className="w-full py-2 px-4 bg-[#017b6e] text-white font-semibold rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="w-full py-2 px-4 bg-[#017b6e] text-white font-semibold rounded-md shadow  focus:outline-none focus:ring-2 focus:ring-offset-2 "
         >
           Add Story
         </button>

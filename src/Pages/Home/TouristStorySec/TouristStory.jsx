@@ -1,0 +1,32 @@
+import { useQuery } from "@tanstack/react-query";
+import StoryCard from "./StoryCard";
+import useAxiosPub from "../../../hooks/useAxiosPub";
+
+
+const TouristStory = () => {
+    const axiosPublic = useAxiosPub()
+    const {data: stories = []} = useQuery({
+        queryKey: ['stories'],
+        queryFn: async ()=>{
+            const {data} = await axiosPublic.get('/stories')
+            return data;
+        }
+    })
+    console.log(stories);
+    return (
+        <div className="my-16">
+            <div className="text-center">
+                <h4 className="font-kaushan-script text-2xl text-[#F26F73]">Journey Chronicles</h4>
+                <h1 className="text-2xl font-bold font-dm-sans  md:text-4xl"> Tales from Our Travelers</h1>
+            </div>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+                {
+                    stories?.map(story=> <StoryCard story={story} key={story._id}/>)
+                }
+            </div>
+           
+        </div>
+    );
+};
+
+export default TouristStory;

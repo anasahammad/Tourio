@@ -83,7 +83,7 @@ const MyProfile = () => {
 
     }
 
-    console.log(user);
+    
   return (
     <div>
         
