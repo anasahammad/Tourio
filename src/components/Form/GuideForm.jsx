@@ -7,12 +7,13 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpinner from "../LoadingSpinner";
 
 const GuideForm = ({ user }) => {
+  
     const { updateUserProfile} = useAuth()
   const axiosSecure = useAxiosSecure();
   const { data: guide, isLoading, refetch } = useQuery({
     queryKey: ["guide"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/tour-guide/${user?.email}`);
+      const res = await axiosSecure.get(`/tour-guide/${user?.email}`);
       return res.data;
     },
   });

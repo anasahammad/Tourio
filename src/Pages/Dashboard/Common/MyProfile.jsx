@@ -6,11 +6,13 @@ import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import GuideForm from "../../../components/Form/GuideForm";
+import axios from "axios";
 
 const MyProfile = () => {
     const {user} = useAuth()
     const [role] = useRole()
     const axiosSecure = useAxiosSecure()
+    const [images, setImages] = useState([])
 
     const {mutateAsync} = useMutation({ 
         mutationFn: async (newStory)=>{
@@ -22,21 +24,66 @@ const MyProfile = () => {
             toast.success("Story Added Successful")
         }
     })
+
+
+
+    const handleImage = (e)=>{
+        const files = [...e.target.files]
+        setImages(files)
+    }
+
+
     const handleStory =  async (e)=>{
         e.preventDefault()
         const form = e.target;
-        const story = form.story.value;
-        console.log(story);
+        const title = form.title.value;
+        const description = form.description.value;
+        const content = form.content.value;
+        const date = form.date.value;
+        const destination = form.destination.value;
 
+        const storyImages = []
+       
         try {
-            const res = await mutateAsync({story, user})
-            console.log(res);
+             // uploading multiple images
+      for (const image of images) {
+        const formData = new FormData();
+        formData.append('image', image);
+        const response = await axios.post(
+          `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY}`,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        ); 
+        storyImages.push(response.data.data.display_url);
+    }
+
+       
+
+        const story = {
+            title, description, content, date, destination, storyImages,
+             author: user?.displayName,             
+             authorImage: user?.photoURL
+
         }
+            const res = await mutateAsync(story)
+            console.log(res);
+            if(res.data.insertedId
+                > 0){
+                form.reset()
+            }
+        }
+    
         catch (err){
             console.log(err.message);
         }
 
     }
+
+    console.log(user);
   return (
     <div>
         
@@ -53,7 +100,7 @@ const MyProfile = () => {
 
         <div>
             {
-                role === 'tourist' && (<StoryForm handleStory={handleStory}/>)
+                role === 'tourist' && (<StoryForm handleImage={handleImage} handleStory={handleStory}/>)
             }
         </div>
         <div>
