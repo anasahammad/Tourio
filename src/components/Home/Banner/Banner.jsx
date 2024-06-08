@@ -1,46 +1,51 @@
-import  { useState, useEffect } from "react";
-import { useTransition, animated } from "react-spring";
-import './Banner.css';
-import image1 from '../../../assets/cover.jpg';
-import image2 from '../../../assets/cover-2.jpg';
-import image3 from '../../../assets/cover-3.jpg';
-import image4 from '../../../assets/cover-4.jpg';
 
-const images = [
-    { src: image1 },
-    { src: image2 },
-    { src: image3 },
-    { src: image4 },
-];
+import { Autoplay, EffectFade, Keyboard,  Pagination } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Slide1 from "./Slide1";
+import Slide2 from "./Slide2";
+import Slide3 from "./Slide3";
+import Slide4 from "./Slide4";
+
+
+
 
 const Banner = () => {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000);
-        return () => clearInterval(interval);
-    }, []);
-
-    const transitions = useTransition(images[index], {
-        from: { opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
-        config: { duration: 2000 },
-    });
-
     return (
-        <div className="banner-section relative h-screen w-full overflow-hidden">
-            {transitions((style, item) => (
-                <animated.div
-                    className="image-container"
-                    style={{
-                        ...style,
-                        backgroundImage: `url(${item.src})`,
-                    }}
-                />
-            ))}
+        <div >
+            
+           
+           
+
+<Swiper
+        spaceBetween={30}
+        slidesPerView={1}
+        effect={'fade'}
+        fadeEffect={{ crossFade: true }}
+        pagination={{
+          clickable: true,
+         
+        }}
+        keyboard={{
+            enebled: true
+        }}
+        loop={true}
+        autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+        modules={[EffectFade, Autoplay, Pagination, Keyboard]}
+        className="mySwiper "
+      >
+        <SwiperSlide> <Slide1/> </SwiperSlide>
+        <SwiperSlide>   <Slide2/></SwiperSlide>
+        <SwiperSlide>   <Slide3/></SwiperSlide>
+        <SwiperSlide>   <Slide4/></SwiperSlide>
+       
+        </Swiper>
         </div>
     );
 };

@@ -74,7 +74,7 @@ const MyWishList = () => {
     }
   };
 
-  if (loading || isLoading) return <LoadingSpinner/>
+  if ( isLoading) return <LoadingSpinner/>
 
   return (
     <div>
@@ -180,7 +180,7 @@ const MyWishList = () => {
         </div>
       ) : (
         <>
-          {isLoading && (
+          {!isLoading && (
             <div className="w-80 mx-auto flex flex-col justify-center items-center 3">
               <Lottie
                 className=" "

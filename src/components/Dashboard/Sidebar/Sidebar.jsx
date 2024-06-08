@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom'
 
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
-import { FaPlus, FaUserCog } from 'react-icons/fa'
+import { FaGlobe, FaPlus, FaUserCog } from 'react-icons/fa'
 import useRole from '../../../hooks/useRole'
 import MenuItem from './Menu/MenuItem'
 import TouristMenu from './Menu/TouristMenu'
@@ -88,13 +88,8 @@ const Sidebar = () => {
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Link to='/'>
-              <img
-                // className='hidden md:block'
-                src='https://i.ibb.co/4ZXzmq5/logo.png'
-                alt='logo'
-                width='100'
-                height='100'
-              />
+            <h2 className='font-bold text-2xl flex font-dm-sans items-center gap-2'>
+                                    <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2>
             </Link>
           </div>
         </div>
@@ -117,13 +112,8 @@ const Sidebar = () => {
           <div>
             <div className='w-full hidden md:flex px-4 py-2 rounded-lg justify-center items-center  mx-auto'>
               <Link to='/'>
-                <img
-                  // className='hidden md:block'
-                  // src='https://i.ibb.co/4ZXzmq5/logo.png'
-                  alt='logo'
-                  width='100'
-                  height='100'
-                />
+              <h2 className='font-bold text-2xl flex  ] font-dm-sans items-center gap-2'>
+              <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2>
               </Link>
             </div>
           </div>
