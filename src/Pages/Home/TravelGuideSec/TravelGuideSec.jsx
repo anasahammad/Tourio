@@ -6,7 +6,7 @@ import MeetTourGuide from "./MeetOurTourGuide/MeetTourGuide";
 
 const TravelGuideSec = () => {
     return (
-        <div>
+        <div className="my-6">
             <Tabs>
     <TabList className="flex  justify-center  border-b-2 border-gray-200 mb-4">
       <Tab >Overview</Tab>
