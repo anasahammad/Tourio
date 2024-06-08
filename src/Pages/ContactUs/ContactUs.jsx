@@ -35,10 +35,10 @@ const ContactUs = () => {
                 <h1 className="text-2xl font-bold font-dm-sans  md:text-4xl">Contact Us</h1>
                 <p className="font-kaushan-script text-[#F26F73]">Send message to us</p>
             </div>
-           <section className="py-10 mt-16 bg-[#EAEBEE]">
+           <section className="py-10  mt-6">
 	<div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
 		<div className="py-6 md:py-0 md:px-6">
-			<h1 className="text-4xl font-bold">Get in touch</h1>
+			<h1 className="text-4xl font-bold text-[#017b6e]">Get in touch</h1>
 			<p className="pt-2 pb-4">Fill in the form to start a conversation</p>
 			<div className="space-y-4">
 				<p className="flex items-center">

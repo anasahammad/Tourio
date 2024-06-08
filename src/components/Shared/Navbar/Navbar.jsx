@@ -27,10 +27,10 @@ const Navbar = () => {
    
     
     return (
-        <nav className="relative bg-white shadow dark:bg-gray-800">
-            <div className="container px-4 py-3 mx-auto">
+        <nav className="fixed bg-white w-full z-50 shadow dark:bg-gray-800">
+            <div className="container px-4 py-4 mx-auto">
                 <div className="flex  flex-col md:flex-row md:justify-between md:items-center">
-                    <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center justify-between ">
                         <div className="flex  items-center">
                             <Link to="/">
                                 <h2 className='font-bold text-2xl flex font-dm-sans items-center gap-2'>
