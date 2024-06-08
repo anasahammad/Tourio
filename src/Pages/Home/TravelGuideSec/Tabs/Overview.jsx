@@ -7,7 +7,7 @@ const Overview = () => {
         <div className="px-4 md:px-1">
           <div className="my-6">
             
-              <h3 className="text-2xl md:text-3xl font-bold">Torio. The Bangladesh Travel Guide</h3>
+              <h3 className="text-2xl md:text-3xl font-bold">Tourio. The Bangladesh Travel Guide</h3>
               <hr />
               <div className="flex flex-col md:flex-row justify-between gap-4">
                   <div className="mt-12 space-y-4 flex-1 text-justify">

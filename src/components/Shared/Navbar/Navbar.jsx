@@ -1,9 +1,9 @@
 import  { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaGlobe, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-
+import logo from "../../../assets/logo.png"
 
 const Navbar = () => {
     const {user, logOut} = useAuth()
@@ -31,10 +31,11 @@ const Navbar = () => {
             <div className="container px-4 py-3 mx-auto">
                 <div className="flex  flex-col md:flex-row md:justify-between md:items-center">
                     <div className="flex items-center justify-between w-full">
-                        <div className="flex items-center">
-                            <a href="#">
-                                <img className="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="logo" />
-                            </a>
+                        <div className="flex  items-center">
+                            <Link to="/">
+                                <h2 className='font-bold text-2xl flex font-dm-sans items-center gap-2'>
+                                    <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2>
+                            </Link>
                            
                         </div>
 

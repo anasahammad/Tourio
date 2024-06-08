@@ -1,13 +1,19 @@
+import Banner from "../../components/Home/Banner/Banner";
 import TouristStory from "./TouristStorySec/TouristStory";
 import TravelGuideSec from "./TravelGuideSec/TravelGuideSec";
 
 
 const Home = () => {
     return (
-        <div className="container mx-auto">
-           <h1>This is Home</h1>
+
+        
+        <div >
+           <Banner/>
+           <div className="container mx-auto">
            <TravelGuideSec/>
            <TouristStory/> 
+           </div>
+           
         </div>
     );
 };
