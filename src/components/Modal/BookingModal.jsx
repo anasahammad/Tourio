@@ -10,6 +10,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner";
+import DiscountMessage from "./DiscountMessage/DiscountMessage";
 
 
 
@@ -19,6 +20,7 @@ const BookingModal = ({openModal, closeBookingModal, item}) => {
   const axiosPublic = useAxiosPub()
   const axiosSecure = useAxiosSecure()
   const [startDate, setStartDate] = useState(new Date());
+
   const navigate = useNavigate()
 
   //fetching all tour guides
@@ -31,6 +33,15 @@ const BookingModal = ({openModal, closeBookingModal, item}) => {
     
   })
 
+  const { data: bookingsData, refetch, isLoading } = useQuery({
+    queryKey: ["bookingsCount", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`/booking-count/${user?.email}`);
+      return data;
+    },
+    enabled: !!user?.email, 
+  });
+
 //post the booking information on db
 const {mutateAsync} = useMutation({
   mutationFn: async (bookingInfo)=>{
@@ -40,6 +51,7 @@ const {mutateAsync} = useMutation({
   onSuccess: (data)=>{
     console.log("Booking added");
     toast.success("Booking is being confirm! Please Contact with the guide")
+  
   }, 
    onError : (error)=>{
     toast.error(error.response?.data?.message || "An error occurred")
@@ -71,7 +83,8 @@ const {mutateAsync} = useMutation({
         guideEmail,
         packageName: item?.title,
         bookingId: item?._id,
-        status: 'In Review'
+        status: 'In Review',
+        
 
       }
       console.log(guideName, tourDate);
@@ -79,7 +92,7 @@ const {mutateAsync} = useMutation({
       try{
         await mutateAsync(bookingInfo)
         closeBookingModal()
-        navigate('/dashboard/my-bookings')
+        // navigate('/dashboard/my-bookings')
        
       } catch (error){
         console.log(error.message);
@@ -124,7 +137,7 @@ const {mutateAsync} = useMutation({
                   handleBooking={handleBooking}
                   ></BookingForm>
                   <div className="mt-4">
-                   
+                      <DiscountMessage user={user}/>
                   </div>
                 </DialogPanel>
               </TransitionChild>
