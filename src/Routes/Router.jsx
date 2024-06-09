@@ -19,6 +19,10 @@ import MyAssignTour from "../Pages/Dashboard/TourGuide/MyAssignTour";
 import StoryDetails from "../Pages/Home/TouristStorySec/StoryDetails";
 import AllStories from "../Pages/Home/TouristStorySec/AllStories";
 import AllPackages from "../Pages/Home/TravelGuideSec/Tabs/OurPackages/AllPackages";
+import PrivateRoutes from "./PrivateRoutes";
+import AdminRoute from "./AdminRoute";
+import TouristRoute from "./TouristRoute";
+import TourGuideRoute from "./TourGuideRoute";
 
 export const router = createBrowserRouter([ 
     { 
@@ -51,11 +55,11 @@ export const router = createBrowserRouter([
             element: <PackageDetails/>,
             loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.id}`)
         },
-         {
-            path: "/package-details/:type",
-            element: <PackageDetails/>,
-            loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.type}`)
-        },
+        //  {
+        //     path: "/package-details/:type",
+        //     element: <PackageDetails/>,
+        //     loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.type}`)
+        // },
          {
             path: "/story-details/:id",
             element: <StoryDetails/>,
@@ -96,18 +100,22 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "my-profile",
-                element: <MyProfile/>
+                element: <PrivateRoutes><MyProfile/></PrivateRoutes>
                 
             },
             {
                 path: "add-package",
-                element: <AddPackage/>
+                element: <PrivateRoutes>
+                    <AdminRoute><AddPackage/></AdminRoute>
+                </PrivateRoutes>
             },
 
             // admin routes
             {
                 path: "manage-users",
-                element: <ManageUsers/>,
+                element: <PrivateRoutes>
+                    <AdminRoute><ManageUsers/></AdminRoute>
+                </PrivateRoutes>,
                 loader: ()=>fetch(`${import.meta.env.VITE_API_KEY}/user-count`)
             },
 
@@ -115,18 +123,24 @@ export const router = createBrowserRouter([
             //tourist routes
             {
                 path: 'my-bookings',
-                element: <MyBookings/>,
+                element: <PrivateRoutes>
+                    <TouristRoute><MyBookings/></TouristRoute>
+                </PrivateRoutes>,
                
             },
             {
                 path: 'my-wishlist',
-                element: <MyWishList/>
+                element: <PrivateRoutes>
+                    <TouristRoute><MyWishList/></TouristRoute>
+                </PrivateRoutes>
             },
            
             //tour guide route
             {
                 path: 'assign-tour',
-                element: <MyAssignTour/>
+                element: <PrivateRoutes>
+                    <TourGuideRoute><MyAssignTour/></TourGuideRoute>
+                </PrivateRoutes>
             }
 
         ]
