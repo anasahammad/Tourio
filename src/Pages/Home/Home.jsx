@@ -12,8 +12,9 @@ const Home = () => {
            <Banner/>
            <div className="container mx-auto">
            <TravelGuideSec/>
-           <TouristStory/> 
            <TourTypeSection/>
+           <TouristStory/> 
+           
            </div>
            
         </div>

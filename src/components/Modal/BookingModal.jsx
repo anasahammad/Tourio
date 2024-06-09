@@ -33,15 +33,8 @@ const BookingModal = ({openModal, closeBookingModal, item}) => {
     
   })
 
-  const { data: bookingsData, refetch, isLoading } = useQuery({
-    queryKey: ["bookingsCount", user?.email],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(`/booking-count/${user?.email}`);
-      return data;
-    },
-    enabled: !!user?.email, 
-  });
 
+  
 //post the booking information on db
 const {mutateAsync} = useMutation({
   mutationFn: async (bookingInfo)=>{
@@ -51,7 +44,6 @@ const {mutateAsync} = useMutation({
   onSuccess: (data)=>{
     console.log("Booking added");
     toast.success("Booking is being confirm! Please Contact with the guide")
-  
   }, 
    onError : (error)=>{
     toast.error(error.response?.data?.message || "An error occurred")

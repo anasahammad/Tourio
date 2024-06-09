@@ -5,31 +5,24 @@ import "slick-carousel/slick/slick-theme.css";
 import { TourTypes } from '../../TourTypes/TourTypes';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPub from '../../../hooks/useAxiosPub';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const TourTypeSection = () => {
   
 
-    const axiosPublic = useAxiosPub()
-    const [selectedType, setSelectedType] = useState(null)
+    
+    const navigate = useNavigate()
 
-    const {data:pack = []} = useQuery({ 
-        queryKey: ['pack', selectedType],
-        queryFn: async ()=>{
-            const res = await axiosPublic.get(`/packages?type=${selectedType}`)
-            return res.data;
-        },
-      
-    })
-
+   
   
-
     const handleClick = (tourType)=>{
-        setSelectedType(tourType)
+        navigate(`/tour-type/${tourType}`)
+        console.log(tourType)
     }
- console.log(pack);
+  
    
 
 

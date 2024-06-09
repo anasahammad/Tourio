@@ -45,7 +45,7 @@ const [days, setDays] = useState([{day: "", title: "", activity: ""}])
                 className='w-full px-4 py-3 border-[#017B6E] focus:outline-[#017B6E]  rounded-md'
                 name='types'
               >
-                {TourTypes.map((tourType) => (
+                {TourTypes?.map((tourType) => (
                   <option value={tourType.label} key={tourType.label}>
                     {tourType.label}
                   </option>

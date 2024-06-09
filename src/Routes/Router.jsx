@@ -23,6 +23,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
 import TouristRoute from "./TouristRoute";
 import TourGuideRoute from "./TourGuideRoute";
+import TourTypePage from "../components/Home/TourTypeSection/TourTypePage";
 
 export const router = createBrowserRouter([ 
     { 
@@ -55,11 +56,11 @@ export const router = createBrowserRouter([
             element: <PackageDetails/>,
             loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.id}`)
         },
-        //  {
-        //     path: "/package-details/:type",
-        //     element: <PackageDetails/>,
-        //     loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.type}`)
-        // },
+         {
+            path: "/tour-type/:type",
+            element: <TourTypePage/>,
+            // loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/tour-type/${params.type}`)
+        },
          {
             path: "/story-details/:id",
             element: <StoryDetails/>,

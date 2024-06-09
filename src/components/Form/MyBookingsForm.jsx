@@ -1,4 +1,12 @@
+import { useState } from "react";
+import PaymentModal from "../Modal/PaymentModal";
+
 const MyBookingsForm = ({ booking, handleCancel }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const closeModal = ()=>{
+    setIsOpen(false)
+  }
   return (
     <tr>
       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -41,9 +49,13 @@ guideName}
            className={`px-3 py-1 text-xs text-red-400 rounded-full dark:bg-gray-800 bg-red-100/60 ${booking?.status !== 'In Review'  && 'hidden' }`}>
             Cancel
           </button>
-          <button className={`px-3 py-1 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60 ${booking?.status !== 'Accepted' && 'hidden'}`}>
+          <button
+          disabled={booking?.status !== 'Accepted'}
+          onClick={()=>setIsOpen(true)}
+           className={`px-3 py-1 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60`}>
             Pay
           </button>
+          <PaymentModal booking={booking} closeModal={closeModal} isOpen={isOpen}/>
         </div>
       </td>
     </tr>
