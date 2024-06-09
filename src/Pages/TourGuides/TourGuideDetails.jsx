@@ -46,7 +46,7 @@ const TourGuideDetails = () => {
         onClick={() => navigate(-1)}
         className="flex items-center font-bold gap-2 my-10"
       >
-        <RiLayoutGrid2Fill />
+        <RiLayoutGrid2Fill  />
         <h1>Back to guides list</h1>
       </div>
 
@@ -92,9 +92,9 @@ const TourGuideDetails = () => {
             </div>
 
             {/* Review Section */}
-            <ReviewsSection/>
+            <ReviewsSection  guideEmail={user?.email}/>
         </div>
-            <div className="w-1/3 md:px-6 ">
+            <div className="md:w-1/3 md:px-6 ">
                 <div className="border-b">
                     <img src={user?.photo} className="w-[300px]" alt="" />
                 </div>

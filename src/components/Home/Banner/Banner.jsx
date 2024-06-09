@@ -17,8 +17,7 @@ const Banner = () => {
     return (
         <div >
             
-           
-           
+               
 
 <Swiper
         spaceBetween={30}

@@ -52,6 +52,11 @@ export const router = createBrowserRouter([
             loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.id}`)
         },
          {
+            path: "/package-details/:type",
+            element: <PackageDetails/>,
+            loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/package/${params.type}`)
+        },
+         {
             path: "/story-details/:id",
             element: <StoryDetails/>,
             loader: ({params})=> fetch(`${import.meta.env.VITE_API_KEY}/story/${params.id}`)

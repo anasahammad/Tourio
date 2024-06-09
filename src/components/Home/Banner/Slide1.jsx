@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import bgImage from '../../../assets/cover.jpg'
 
+import bgImage from '../../../assets/cover.jpg'
 const Slide1 = () => {
     return (
         <div>
