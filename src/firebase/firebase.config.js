@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDIKcHHgIx34Q2mVeE72WRr80zGhUteqzY",
-  authDomain: "tourio-a04d8.firebaseapp.com",
-  projectId: "tourio-a04d8",
-  storageBucket: "tourio-a04d8.appspot.com",
-  messagingSenderId: "755229468826",
-  appId: "1:755229468826:web:ee7fa1f008f39644711723"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

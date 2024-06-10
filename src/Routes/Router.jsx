@@ -24,11 +24,13 @@ import AdminRoute from "./AdminRoute";
 import TouristRoute from "./TouristRoute";
 import TourGuideRoute from "./TourGuideRoute";
 import TourTypePage from "../components/Home/TourTypeSection/TourTypePage";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([ 
     { 
     path: "/", 
     element: <Main/>,
+    errorElement: <ErrorPage/>,
     children: [
         {
             index: true,
