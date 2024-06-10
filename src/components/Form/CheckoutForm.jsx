@@ -6,22 +6,26 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 
 
-const CheckoutForm = ({closeModal, booking}) => {
+const CheckoutForm = ({closeModal, booking, user}) => {
     const stripe = useStripe()
     const elements = useElements()
     const axiosSecure = useAxiosSecure()
-    const [clientSecret, setClientSecret] = useState(null)
-    const {user} = useAuth()
+    const [clientSecret, setClientSecret] = useState('')
+    
 
         const price = booking?.price;
+
     useEffect(()=>{
         axiosSecure.post('/create-payment-intent', {price})
         .then(res=>{
+            console.log(res.data);
             setClientSecret(res.data.clientSecret)
         })
     }, [axiosSecure, price])
 
     console.log(clientSecret);
+
+
     const handleSubmit = async (event)=>{
         event.preventDefault()
 
@@ -30,6 +34,7 @@ const CheckoutForm = ({closeModal, booking}) => {
         }
 
         const card = elements.getElement(CardElement);
+
         if(card === null) {
             return
         }
@@ -46,26 +51,31 @@ const CheckoutForm = ({closeModal, booking}) => {
             console.log("payment method", paymentMethod);
         }
 
-        const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(clientSecret, {
+        if (!clientSecret) {
+            toast.error("Client secret not set");
+            return;  
+          }
+
+          const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(clientSecret, {
             payment_method : {
-                card ,
+                card : card,
                 billing_details : {
                     email : user?.email || 'anonymous',
                     name: user?.displayName || 'anonymous'
                 }
             }
         })
+        console.log(paymentIntent);
 
         if(confirmError){
+            console.log('confirmError', confirmError);
             toast.error(confirmError)
         }
         else{
-            console.log('paymentIntent', paymentIntent)
+            console.log('payment intent', paymentIntent);
             if(paymentIntent.status === 'succeeded'){
-              console.log(paymentIntent.id);
-              toast.success("Payment Successful")
-              closeModal()
-              
+                console.log(paymentIntent.id);
+                toast.success("Payment Successful")
             }
         }
     }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PaymentModal from "../Modal/PaymentModal";
 
-const MyBookingsForm = ({ booking, handleCancel }) => {
+const MyBookingsForm = ({ booking, handleCancel, user }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const closeModal = ()=>{
@@ -55,7 +55,7 @@ guideName}
            className={`px-3 py-1 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60`}>
             Pay
           </button>
-          <PaymentModal booking={booking} closeModal={closeModal} isOpen={isOpen}/>
+          <PaymentModal user={user} booking={booking} closeModal={closeModal} isOpen={isOpen}/>
         </div>
       </td>
     </tr>

@@ -149,6 +149,7 @@ const handleNext = ()=>{
                      <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                        {myBookings?.map((booking) => (
                          <MyBookingsForm
+                         user={user}
                            key={booking.bookingId}
                            handleCancel={handleCancel}
                            booking={booking}

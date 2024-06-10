@@ -1,12 +1,12 @@
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import {loadStripe} from '@stripe/stripe-js';
 import { Fragment } from "react";
 import CheckoutForm from "../Form/CheckoutForm";
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_CLIENT_SECRET);
+const stripePromise = loadStripe('pk_test_51PQ7D1BRNhZy5M0OZ1HUzF5NK5j0JAzaDNEpBlC4gkw4bx4gBFvL4mTs4B1lAFQc7xlLxc29AWoSQiv0b2uzUaFX00Hqg8FEfV');
 
-const PaymentModal = ({isOpen, closeModal, booking}) => {
+const PaymentModal = ({isOpen, closeModal, booking, user}) => {
     return (
         <Transition appear show={isOpen} as={Fragment}>
         <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -38,41 +38,13 @@ const PaymentModal = ({isOpen, closeModal, booking}) => {
                     as='h3'
                     className='text-lg font-medium text-center leading-6 text-gray-900'
                   >
-                    Review Info Before Payment
+                     Payment The Tour Guide
                   </DialogTitle>
-                  <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>
-                      Package: {booking?.
-packageName}
-                    </p>
-                  </div>
-                  <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>
-                      Guide Name: {booking?.
-guideName}
-                    </p>
-                  </div>
-                  <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>
-                      Guide email: {booking?.guideEmail}
-                    </p>
-                  </div>
-                  <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>
-                      Date: {new Date(booking?.
-tourDate).toLocaleString()}
-                    </p>
-                  </div>
-  
-                  <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>
-                      Price: Tk {booking?.price}
-                    </p>
-                  </div>
+                 
                   <hr className='mt-8 ' />
                  
                   <Elements stripe={stripePromise}>
-                     <CheckoutForm booking={booking} closeModal={closeModal}/>
+                     <CheckoutForm user={user} booking={booking} closeModal={closeModal}/>
                   </Elements>
   
                
