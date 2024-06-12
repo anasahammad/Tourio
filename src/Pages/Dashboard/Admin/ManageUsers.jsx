@@ -13,7 +13,7 @@ import useAuth from "../../../hooks/useAuth";
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure()
    const {count} = useLoaderData()
-   const {loading,setLoading} = useAuth()
+   const {loading,setLoading, user} = useAuth()
   const itemsPerPage = 10;
    const [currentPage, setCurrentPage] = useState(1)
    const numberOfPage = Math.ceil(count / itemsPerPage)
@@ -38,6 +38,7 @@ const handleNext = ()=>{
 }
     const {data: users = [], refetch, isLoading, isPending} = useQuery({
         queryKey: ['users', currentPage,itemsPerPage ],
+       
         queryFn: async ()=>{
             const res = await axiosSecure.get(`/users?page=${currentPage}&size=${itemsPerPage}&search=${search}&filter=${filter}`)
             return res.data;

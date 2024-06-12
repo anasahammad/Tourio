@@ -117,7 +117,7 @@ export const router = createBrowserRouter([
             {
                 path: "manage-users",
                 element: <PrivateRoutes>
-                    <AdminRoute><ManageUsers/></AdminRoute>
+                    <ManageUsers/>
                 </PrivateRoutes>,
                 loader: ()=>fetch(`${import.meta.env.VITE_API_KEY}/user-count`)
             },

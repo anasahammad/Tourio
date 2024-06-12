@@ -1,4 +1,3 @@
-
 import { createContext, useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
@@ -15,63 +14,98 @@ import {
 
 import axios from 'axios'
 import app from '../firebase/firebase.config'
+
 export const AuthContext = createContext(null)
+
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
 const twitterProvider = new TwitterAuthProvider()
+
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const createUser = (email, password) => {
+  const createUser = async (email, password) => {
     setLoading(true)
-    return createUserWithEmailAndPassword(auth, email, password)
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password)
+      return result
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const signIn = (email, password) => {
+  const signIn = async (email, password) => {
     setLoading(true)
-    return signInWithEmailAndPassword(auth, email, password)
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password)
+      return result
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const signInWithGoogle = () => {
+  const signInWithGoogle = async () => {
     setLoading(true)
-    return signInWithPopup(auth, googleProvider)
-  }
-  const signInWithTwitter = () => {
-    setLoading(true)
-    return signInWithPopup(auth, twitterProvider)
+    try {
+      const result = await signInWithPopup(auth, googleProvider)
+      return result
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const resetPassword = email => {
+  const signInWithTwitter = async () => {
     setLoading(true)
-    return sendPasswordResetEmail(auth, email)
+    try {
+      const result = await signInWithPopup(auth, twitterProvider)
+      return result
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const resetPassword = async email => {
+    setLoading(true)
+    try {
+      await sendPasswordResetEmail(auth, email)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const logOut = async () => {
     setLoading(true)
-    await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-      withCredentials: true,
-    })
-    return signOut(auth)
+    try {
+      await axios.get(`${import.meta.env.VITE_API_KEY}/logout`, {
+        withCredentials: true,
+      })
+      await signOut(auth)
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const updateUserProfile = (name, photo) => {
+  const updateUserProfile = async (name, photo) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
     })
   }
-  // Get token from server
+
   const getToken = async email => {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_KEY}/jwt`,
-      { email },
-      { withCredentials: true }
-    )
-    return data
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_KEY}/jwt`,
+        { email },
+        { withCredentials: true }
+      )
+      return data
+    } catch (error) {
+      console.error('Error fetching token:', error)
+    }
   }
 
-  // save user
   const saveUser = async user => {
     const currentUser = {
       email: user.email,
@@ -80,26 +114,27 @@ const AuthProvider = ({ children }) => {
       role: "tourist",
       status: 'verified'
     }
-    const { data } = await axios.put(
-      `${import.meta.env.VITE_API_KEY}/user`,
-      currentUser
-    )
-    return data
+    try {
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_API_KEY}/user`,
+        currentUser
+      )
+      return data
+    } catch (error) {
+      console.error('Error saving user:', error)
+    }
   }
 
-  // onAuthStateChange
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    const unsubscribe = onAuthStateChanged(auth, async currentUser => {
       setUser(currentUser)
       if (currentUser) {
-        getToken(currentUser.email)
-        saveUser(currentUser)
+        await getToken(currentUser.email)
+        await saveUser(currentUser)
       }
       setLoading(false)
     })
-    return () => {
-      return unsubscribe()
-    }
+    return () => unsubscribe()
   }, [])
 
   const authInfo = {
