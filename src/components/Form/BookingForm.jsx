@@ -20,7 +20,7 @@ const BookingForm = ({guides, startDate, setStartDate,handleBooking }) => {
             </label>
             <select
               required
-              className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+              className='w-full px-4 py-3 border border-[#18877B] focus:outline-[#18877B] rounded-md'
               name='guideName'
             >
               {guides?.map(guide => (
@@ -37,8 +37,8 @@ const BookingForm = ({guides, startDate, setStartDate,handleBooking }) => {
             <label htmlFor='location' className='block '>
               Select Tour Date
             </label>
-            <div className='w-full  '>
-            <DatePicker className='w-full' selected={startDate} onChange={(date) => setStartDate(date)} />
+            <div className='  '>
+            <DatePicker className='w-full  border py-3 rounded-lg' selected={startDate} onChange={(date) => setStartDate(date)} />
             </div>
           </div>
 
@@ -48,7 +48,7 @@ const BookingForm = ({guides, startDate, setStartDate,handleBooking }) => {
 
         <button
           type='submit'
-          className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500'
+          className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#18877B]'
         >
          Book Now
         </button>

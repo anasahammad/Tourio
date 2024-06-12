@@ -74,13 +74,13 @@ const PackageDetails = () => {
 
             <div className="divider container mx-auto"></div>
 
-            <div className="flex justify-between container mx-auto">
+            <div className="flex flex-col md:flex-row justify-between container mx-auto">
                 {/* for the tour plan details */}
                 <div className="container mx-auto">
                     <TourPlanDetails item={item}/>
                 </div>
                 {/* For the booking  */}
-                <div className="bg-[#EAEBEE] h-[400px] px-4 py-6 rounded-[10px] w-[500px]">
+                <div className="bg-[#EAEBEE] h-[400px] mx-auto px-4 py-6 rounded-[10px] md:w-[500px]">
                     <div className="">
                     <div>
                 <h1>From <span className="text-2xl md:text-3xl font-dm-sans font-bold">Tk {item.price}</span></h1>

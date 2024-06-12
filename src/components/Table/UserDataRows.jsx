@@ -23,6 +23,7 @@ const UserDataRows = ({ user, refetch }) => {
     },
     onSuccess: () => {
       refetch();
+      setIsOpen(false);
       toast.success("Role Updated");
     },
   });

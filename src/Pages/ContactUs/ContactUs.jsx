@@ -62,18 +62,18 @@ const ContactUs = () => {
 				</p>
 			</div>
 		</div>
-		<form onSubmit={handleSubmit} className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
+		<form onSubmit={handleSubmit} className="flex flex-col  py-6 space-y-6 md:py-0 md:px-6">
 			<label className="block">
 				<span className="mb-1">Full name</span>
 				<input required name="name" type="text" placeholder="Leroy Jenkins" className="block w-full rounded-md shadow-sm px-4 py-2 focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100" />
 			</label>
 			<label className="block">
 				<span className="mb-1">Email address</span>
-				<input required name="email" type="email" placeholder="leroy@jenkins.com" className="block w-full rounded-md px-4 py-2  shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100" />
+				<input className="border" required name="email" type="email" placeholder="leroy@jenkins.com" className="block w-full rounded-md px-4 py-2  shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100" />
 			</label>
 			<label className="block">
 				<span className="mb-1">Message</span>
-				<textarea required name="message" rows="3" className="block w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100"></textarea>
+				<textarea required name="message" rows="3" className="block border w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100"></textarea>
 			</label>
 			<button type="submit" className="self-center px-8 py-3 text-white bg-[#017b6e] text-lg rounded ">Semd Message</button>
 		</form>

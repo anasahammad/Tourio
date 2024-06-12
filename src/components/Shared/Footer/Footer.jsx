@@ -1,6 +1,7 @@
-import React from 'react';
+
 import { FaGlobe } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import logo from '../../../assets/logo-1.svg'
 
 const Footer = () => {
   return (
@@ -138,8 +139,9 @@ const Footer = () => {
 
         <div className="flex flex-col items-center justify-between sm:flex-row">
         <Link to="/">
-                                <h2 className='font-bold text-2xl flex font-dm-sans items-center gap-2'>
-                                    <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2>
+                                {/* <h2 className='font-bold text-2xl flex font-dm-sans items-center gap-2'>
+                                    <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2> */}
+                                    <img src={logo} alt="" />
                             </Link>
 
           <p className="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-300">

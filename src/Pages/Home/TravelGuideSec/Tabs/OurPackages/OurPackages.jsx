@@ -21,7 +21,7 @@ const OurPackages = () => {
   if(isLoading) return <LoadingSpinner/>
   
     return (
-        <div className="px-6">
+        <div className="px-6 container mx-auto">
            
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {

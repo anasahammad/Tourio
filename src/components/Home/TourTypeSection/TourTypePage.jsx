@@ -39,8 +39,14 @@ const TourTypePage = () => {
                         </Link>
                     </div> )
                 }
+
+                
             </div>
-           
+            {
+                    tourTypes.length === 0 && <div className="text-center py-10"><h1 className="font-dm-sans text-3xl font-bold">
+                        No Packages Added For this Type
+                        </h1></div>
+                }
         </div>
     );
 };

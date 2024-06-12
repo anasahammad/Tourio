@@ -3,7 +3,7 @@ import { FaBars, FaGlobe, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import logo from "../../../assets/logo.png"
+import logo from '../../../assets/logo-1.svg'
 
 const Navbar = () => {
     const {user, logOut} = useAuth()
@@ -33,8 +33,9 @@ const Navbar = () => {
                     <div className="flex items-center justify-between ">
                         <div className="flex  items-center">
                             <Link to="/">
-                                <h2 className='font-bold text-2xl flex font-dm-sans items-center gap-2'>
-                                    <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2>
+                                {/* <h2 className='font-bold text-2xl flex font-dm-sans items-center gap-2'>
+                                    <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2> */}
+                                    <img src={logo} alt="" />
                             </Link>
                            
                         </div>
@@ -56,7 +57,7 @@ const Navbar = () => {
                             <button
                                 onClick={toggleMenu}
                                 type="button"
-                                className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400 mr-2"
+                                className="text-gray-500 dark:text-gray-200 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400 mr-2"
                                 aria-label="toggle menu"
                             >
                                 {isOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
@@ -67,19 +68,19 @@ const Navbar = () => {
                     {/* Mobile Menu */}
                     <div className={`lg:flex  items-center ${isOpen ? 'block' : 'hidden'}`}>
                         <div className="flex  w-full flex-col md:flex-row md:mx-1">
-                            <Link to="/" className="my-2 text-sm font-semibold leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0" >
+                            <Link to="/" className="my-2 text-sm font-semibold leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:text-orange-400 md:mx-4 md:my-0" >
                                 Home
                             </Link>
-                            <Link to="/community" className="my-2 font-semibold text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0" >
+                            <Link to="/community" className="my-2 font-semibold text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:text-orange-400 md:mx-4 md:my-0" >
                                 Community
                             </Link>
-                            <Link to="/blogs" className="my-2 font-semibold text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0" >
+                            <Link to="/blogs" className="my-2 font-semibold text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:text-orange-400 md:mx-4 md:my-0" >
                                 Blogs
                             </Link>
-                            <Link to="/about-us" className="my-2 font-semibold text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0" >
+                            <Link to="/about-us" className="my-2 font-semibold text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:text-orange-400 md:mx-4 md:my-0" >
                                 About Us
                             </Link>
-                            <Link to="/contact-us" className="my-2 font-semibold text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0">
+                            <Link to="/contact-us" className="my-2 font-semibold text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 dark:hover:text-blue-400 hover:text-orange-400 md:mx-4 md:my-0">
                                 Contact Us
                             </Link>
                            
