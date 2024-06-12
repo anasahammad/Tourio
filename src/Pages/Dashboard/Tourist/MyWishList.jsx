@@ -81,7 +81,7 @@ const MyWishList = () => {
       {wishlist?.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border  border-gray-200">
-            <thead className="bg-[#017b6e] text-white ">
+            <thead className="bg-[#05073c] text-white ">
               <tr className="text-sm g">
                 <th className="px-4 py-4 border-b ">Package Photo</th>
                 <th className="px-4 py-4 border-b">Package Name</th>
@@ -189,7 +189,7 @@ const MyWishList = () => {
               />
 
               <Link to="/">
-                <button className="px-8 btn bg-[#017b6e] mb-4 text-white py-3 font-semibold rounded  ">
+                <button className="px-8 btn bg-[#05073c] mb-4 text-white py-3 font-semibold rounded  ">
                   Back to Home Page
                 </button>
               </Link>

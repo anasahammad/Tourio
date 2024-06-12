@@ -17,7 +17,7 @@ const TourGuideModal = ({isOpen, closeModal, handleRequest}) => {
                 leaveFrom="opacity-100 transform-[scale(100%)]"
                 leaveTo="opacity-0 transform-[scale(95%)]"
               >
-                <DialogPanel className="w-full max-w-md rounded-xl  p-6 bg-white text-black">
+                <DialogPanel className="w-full max-w-md rounded-xl transform overflow-hidden  bg-white p-6 text-left align-middle shadow-xl transition-al   text-black">
                   
                   <TourGuideForm   closeModal={closeModal} handleRequest={handleRequest}/>
                   

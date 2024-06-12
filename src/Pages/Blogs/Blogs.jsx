@@ -37,7 +37,7 @@ const Blogs = () => {
                     <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src={blog?.image} />
                     <div className="p-6 space-y-2">
                         <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline hover:text-[#017b6e]">{blog?.title}</h3>
-                        <span className="text-xs dark:text-gray-600">{blog?.date}</span>
+                        <span className="text-xs ">{blog?.date}</span>
                         <p>{blog?.description}</p>
                     </div>
                 </a>)
@@ -46,7 +46,7 @@ const Blogs = () => {
 		
 		</div>
 		<div className="flex justify-center">
-			<button type="button" className="px-6 py-3 text-sm rounded-md hover:underline bg-[#017b6e] text-white">Load more posts...</button>
+			<button type="button" className="px-6 py-3 text-sm rounded-md hover:underline bg-[#ed6c33] text-white">Load more posts...</button>
 		</div>
 	</div>
 </section>

@@ -25,7 +25,7 @@ const AboutUs = () => {
                     <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                         <div className="relative">
                             <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#017b6e] text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#ed6c33] text-white">
                                     
                                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h4l3-3m0 0l3 3m-3-3v12"></path>
@@ -40,7 +40,7 @@ const AboutUs = () => {
 
                         <div className="relative">
                             <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#017b6e] text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#ed6c33] text-white">
                                     
                                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V7a2 2 0 00-2-2H7"></path>
@@ -55,7 +55,7 @@ const AboutUs = () => {
 
                         <div className="relative">
                             <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#017b6e] text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#ed6c33] text-white">
                                     
                                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19V6l-2 2m4-4l2 2m0 0l2-2m-2 2v13"></path>
@@ -70,7 +70,7 @@ const AboutUs = () => {
 
                         <div className="relative">
                             <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#017b6e] text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-[#ed6c33] text-white">
                                     
                                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 018 0m-8 0a4 4 0 018 0m0 0v6m0 0h12a2 2 0 002-2v-6m-8 0a4 4 0 018 0m-8 0a4 4 0 018 0"></path>

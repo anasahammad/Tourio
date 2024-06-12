@@ -89,7 +89,7 @@ const MyAssignTour = () => {
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                  <thead className=" bg-[#017b6e] text-white">
+                  <thead className=" bg-[#05073c] text-white">
                     <tr>
                       <th
                         scope="col"

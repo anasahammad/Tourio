@@ -16,10 +16,11 @@ const TouristStory = () => {
     })
     console.log(stories);
     return (
-        <div className="my-16">
+        <div className="my-16 container mx-auto">
             <div className="text-center">
                 <h4 className="font-kaushan-script text-2xl text-[#F26F73]">Journey Chronicles</h4>
-                <h1 className="text-2xl font-bold font-dm-sans  md:text-4xl"> Tales from Our Travelers</h1>
+                <h1 className="text-2xl font-bold font-dm-sans
+                 text-[#05073C]   md:text-4xl"> Tales from Our Travelers</h1>
             </div>
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
                 {

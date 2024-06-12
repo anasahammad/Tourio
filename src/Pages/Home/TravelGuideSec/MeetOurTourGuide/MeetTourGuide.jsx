@@ -16,12 +16,12 @@ const MeetTourGuide = () => {
 
     if(isLoading) return <LoadingSpinner/>
     return (
-        <div className="my-6">
+        <div className="my-6 container mx-auto">
             <div className="overflow-x-auto">
   <table className="table ">
     {/* head */}
     <thead>
-      <tr className="font-semibold text-[#017b6e]">
+      <tr className="font-semibold text-[#05073c]">
         <th className="border px-4 py-2 ">Guide</th>
         <th className="border px-4 py-2">Name</th>
         <th className="border px-4 py-2">Languages</th>
@@ -50,7 +50,7 @@ language}</td>
             <td className="border px-4 py-2">{guide?.email}</td>
             <td className="border px-4 py-2">
              <Link to={`/guide-details/${guide.email}`}>
-             <button className="btn btn-ghost text-[#017b6e] btn-xs">details</button>
+             <button className="btn btn-ghost text-[#ed6c33] btn-xs">details</button>
              </Link>
             </td>
           </tr>)

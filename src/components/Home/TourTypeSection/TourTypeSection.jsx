@@ -1,85 +1,81 @@
-
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 import { TourTypes } from '../../TourTypes/TourTypes';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosPub from '../../../hooks/useAxiosPub';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
+// Import Swiper React components
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
 
 const TourTypeSection = () => {
-  
+  const navigate = useNavigate();
 
-    
-    const navigate = useNavigate()
-
-   
-  
-    const handleClick = (tourType)=>{
-        navigate(`/tour-type/${tourType}`)
-        console.log(tourType)
-    }
-  
-   
-
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  const handleClick = (tourType) => {
+    navigate(`/tour-type/${tourType}`);
+    console.log(tourType);
   };
 
   return (
-    <section className="bg-[#017b6e] py-10">
+    <section className="bg-[#FFF7F4] py-20">
       <div className="max-w-6xl mx-auto px-6 text-center">
-      <div className=" py-6 px-4 text-center">
-      <div className="text-center">
-                <h4 className="font-kaushan-script text-2xl text-[#F26F73]">Find a Tour by</h4>
-                <h1 className="text-2xl font-bold font-dm-sans  md:text-4xl"> Tour Types</h1>
-            </div>
-            </div>
-        <Slider {...settings}>
-          {TourTypes?.map((type) => (
-            <div onClick={()=>handleClick(type.label)}  key={type.label} className="px-4  cursor-pointer">
-              <div  className="bg-white  rounded-lg p-6 shadow-lg ">
-              <div className="text-3xl mb-4 flex justify-center">
-                  <type.icon />
-                </div>
-                <h3 className="text-xl font-bold">{type?.label}</h3>
-              </div>
-            </div>
-          ))}
-        </Slider>
+        <div className="py-6 px-4 text-center">
+          <div className="text-center">
+            <h4 className="font-kaushan-script text-2xl text-[#F26F73]">Find a Tour by</h4>
+            <h1 className="text-2xl font-bold text-[#05073C] font-dm-sans md:text-4xl">Tour Types</h1>
+          </div>
+        </div>
+        <div className='py-16'>
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={5}
+            breakpoints={{
+              1024: {
+                slidesPerView: 5,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              320: {
+                slidesPerView: 1,
+              },
+            }}
+            loop={true}
+            navigation={true}
+            modules={[Pagination, Navigation]}
+            className="mySwiper"
+          >
+            {TourTypes?.map((type) => (
+              <SwiperSlide key={type.label}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 cursor-pointer"
+                  onClick={() => handleClick(type.label)}
+                >
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="bg-white rounded-lg p-6 shadow-lg"
+                  >
+                    <div className="text-3xl mb-4 flex justify-center">
+                      <type.icon className='text-[#ed6c33]' />
+                    </div>
+                    <h3 className="text-xl font-bold">{type?.label}</h3>
+                  </motion.div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </section>
   );

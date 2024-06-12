@@ -97,7 +97,7 @@ const {mutateAsync} = useMutation({
         <div>
               <Transition appear show={openModal}>
         <Dialog as="div" className="relative z-10 focus:outline-none" onClose={closeBookingModal}>
-          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div className="fixed inset-0 z-50 w-screen overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4">
               <TransitionChild
                 enter="ease-out duration-300"
@@ -115,12 +115,18 @@ const {mutateAsync} = useMutation({
                   <div className="absolute top-5 right-5">
                   <MdCancel  onClick={closeBookingModal} className="text-2xl cursor-pointer text-red-500" />
                   </div>
+                  <div className="flex">
+
                   <div>
                     <h1 className="font-bold">{item?.title}</h1>
                     <h1>Name: {user?.displayName}</h1>
                     <p>Email: {user?.email}</p>
                     <p>Price: Tk {item?.price}</p>
+                    
 
+                  </div>
+
+                 
                   </div>
                   <BookingForm
                   setStartDate={setStartDate}

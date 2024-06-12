@@ -43,7 +43,7 @@ const TourGuideForm = ({handleRequest, closeModal}) => {
         </div>
 
         <div className="flex justify-between mt-6">
-            <button type="submit" className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#017B6E] rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Submit</button>
+            <button type="submit" className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#05073c] rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Submit</button>
 
            
         </div>

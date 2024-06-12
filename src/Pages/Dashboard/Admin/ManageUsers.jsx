@@ -112,7 +112,7 @@ const handleNext = ()=>{
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                 <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                     <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                        <thead className="bg-[#017b6e] e">
+                        <thead className="bg-[#05073c] e">
                             <tr>
                                 <th scope="col" className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-white dark:text-gray-400">
                                     <div className="flex items-center gap-x-3">
@@ -148,7 +148,7 @@ const handleNext = ()=>{
                                 <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-white dark:text-gray-400">Action</th>
                             </tr>
                         </thead>
-                        <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"> 
+                        <tbody className="bg-white divide-y divide-gray-200 "> 
 
                         {
                             users?.map(user=>  <UserDataRows

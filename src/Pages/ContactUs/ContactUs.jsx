@@ -38,7 +38,7 @@ const ContactUs = () => {
            <section className="py-10  mt-6">
 	<div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
 		<div className="py-6 md:py-0 md:px-6">
-			<h1 className="text-4xl font-bold text-[#017b6e]">Get in touch</h1>
+			<h1 className="text-4xl font-bold text-[#ed6c33]">Get in touch</h1>
 			<p className="pt-2 pb-4">Fill in the form to start a conversation</p>
 			<div className="space-y-4">
 				<p className="flex items-center">
@@ -75,7 +75,7 @@ const ContactUs = () => {
 				<span className="mb-1">Message</span>
 				<textarea required name="message" rows="3" className="block border w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100"></textarea>
 			</label>
-			<button type="submit" className="self-center px-8 py-3 text-white bg-[#017b6e] text-lg rounded ">Semd Message</button>
+			<button type="submit" className="self-center px-8 py-3 text-white bg-[#ed6c33] text-lg rounded ">Semd Message</button>
 		</form>
 	</div>
 </section>

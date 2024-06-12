@@ -20,7 +20,7 @@ const WorkWithSec = () => {
         <div className="container mx-auto">
         <div className="text-center">
                 <h4 className="font-kaushan-script text-2xl text-[#F26F73]">Check Out the company</h4>
-                <h1 className="text-2xl font-bold font-dm-sans  md:text-4xl"> Whom We Works with</h1>
+                <h1 className="text-2xl font-bold text-[#05073c] font-dm-sans  md:text-4xl"> Whom We Works with</h1>
             </div>
             <motion.div
                 className="flex space-x-10 overflow-hidden"
