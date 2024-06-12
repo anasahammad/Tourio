@@ -89,7 +89,7 @@ const AddPackageForm = ({ handleForm, handleFiles, imagePreview }) => {
               />
               <label
                 htmlFor="image"
-                className="block cursor-pointer text-center bg-[#18877b] text-white py-2 px-4 rounded-md  transition"
+                className="block cursor-pointer text-center bg-[#ed6c33] text-white py-2 px-4 rounded-md  transition"
               >
                 Select Files
               </label>
@@ -215,7 +215,7 @@ const AddPackageForm = ({ handleForm, handleFiles, imagePreview }) => {
 
         <button
           type="submit"
-          className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded-md shadow-md bg-[#18877b] "
+          className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded-md shadow-md bg-[#ed6c33] "
         >
           Add
         </button>

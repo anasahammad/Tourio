@@ -20,7 +20,7 @@ const BookingForm = ({guides, startDate, setStartDate,handleBooking }) => {
             </label>
             <select
               required
-              className='w-full px-4 py-3 border border-[#18877B] focus:outline-[#18877B] rounded-md'
+              className='w-full px-4 py-3 border border-[#ed6c33] focus:outline-[#ed6c33] rounded-md'
               name='guideName'
             >
               {guides?.map(guide => (
@@ -48,7 +48,7 @@ const BookingForm = ({guides, startDate, setStartDate,handleBooking }) => {
 
         <button
           type='submit'
-          className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#18877B]'
+          className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#ed6c33]'
         >
          Book Now
         </button>

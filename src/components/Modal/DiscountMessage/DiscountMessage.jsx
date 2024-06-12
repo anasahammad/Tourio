@@ -37,14 +37,14 @@ const DiscountMessage = ({ user }) => {
     <div className="relative">
       {showMessage && <Confetti width={width} height={height} />}
       {bookingsCount > 3 && (
-        <div className="p-4 bg-green-100 border border-[#18877b] rounded-md text-center mt-4">
+        <div className="p-4 bg-green-100 border border-[#ed6c33] rounded-md text-center mt-4">
           <h2 className="text-2xl font-bold mb-2">Congratulations!</h2>
           <p className="mb-4">You have booked more than 3 times! You get a discount.</p>
           <button onClick={()=>{
             toast.success("Congratulations The discount applied successful!")
             navigate("/dashboard/my-bookings")
             return
-          }} className="btn bg-[#18877b] text-white px-4 py-2 rounded-md ">
+          }} className="btn bg-[#ed6c33] text-white px-4 py-2 rounded-md ">
             Apply Discount
           </button>
         </div>

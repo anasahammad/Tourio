@@ -29,7 +29,7 @@ const TouristStory = () => {
             {
                     stories.length > 3 && <div className="flex justify-center my-4">
                         <Link to={`/all-stories`}>
-                        <button className="btn bg-[#18877B] text-white text-xl rounded-3xl">All Stories <FiArrowUpRight/></button>
+                        <button className="btn bg-[#ed6c33] text-white text-xl rounded-3xl">All Stories <FiArrowUpRight/></button>
                         </Link>
                     </div>
                 }

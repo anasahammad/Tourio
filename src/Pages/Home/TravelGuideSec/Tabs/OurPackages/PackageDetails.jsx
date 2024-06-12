@@ -33,7 +33,7 @@ const PackageDetails = () => {
 
     return (
         <div className="">
-            <div className="bg-[#EFEEDB] py-6 px-4 text-center">
+            <div className="bg-[#FDF0EA] py-6 px-4 text-center">
                 <h1 className="text-2xl font-bold font-dm-sans  md:text-4xl">Tour Details</h1>
                 <p className="font-kaushan-script text-[#F26F73]">Let's Know About the tour</p>
             </div>
@@ -48,7 +48,7 @@ const PackageDetails = () => {
                 </div>
                 <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex flex-col md:flex-row gap-2 md:gap-4 font-dm-sans">
-              <div className="flex  gap-2 items-center mb-1 text-[#18877B] font-medium md:text-2xl">
+              <div className="flex  gap-2 items-center mb-1 text-[#ed6c33] font-medium md:text-2xl">
                 <CiLocationOn className="text-xl"/>
                 <h3>{item.destination}</h3>
             </div>
@@ -99,7 +99,7 @@ const PackageDetails = () => {
                         <GuideListModal isOpen={isOpen} closeModal={closeModal}></GuideListModal>
                     </div>
                 <div >
-                    <button onClick={()=>setOpenModal(true)} className="btn bg-[#18877B] text-white  w-full">Book This Plan</button>
+                    <button onClick={()=>setOpenModal(true)} className="btn bg-[#ed6c33] text-white  w-full">Book This Plan</button>
                 </div>
                     <BookingModal item={item} openModal={openModal} closeBookingModal={closeBookingModal}></BookingModal>
                 <div className="px-3 py-4">

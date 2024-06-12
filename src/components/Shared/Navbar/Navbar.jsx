@@ -87,7 +87,7 @@ const Navbar = () => {
                         </div>
                         {!user && (
                              <div className='w-[200px]  ml-6'> <Link to="/login"
-                             className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform  rounded-lg focus:outline-none focus:ring  bg-[#18877b]">
+                             className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform  rounded-lg focus:outline-none focus:ring  bg-[#ed6c33]">
                              Login
                          </Link>
                         

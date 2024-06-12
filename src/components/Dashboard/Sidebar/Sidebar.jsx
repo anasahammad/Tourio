@@ -22,7 +22,7 @@ import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import TourGuideModal from '../../Modal/TourGuideModal'
 import LoadingSpinner from '../../LoadingSpinner'
-
+import logo from '../../../assets/logo-1.svg'
 const Sidebar = () => {
   const { user } = useAuth()
   const [isActive, setActive] = useState(false)
@@ -84,7 +84,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className='bg-[#18877b] text-white text-gray-800 flex justify-between md:hidden'>
+      <div className='bg-[#ed6c33] text-white text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Link to='/'>
@@ -104,16 +104,17 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#18877b] text-white w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#ed6c33] text-white w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && '-translate-x-full'
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 rounded-lg justify-center items-center  mx-auto'>
+            <div className='w-full hidden bg-white md:flex  py-2 rounded-lg justify-center items-center  mx-auto'>
               <Link to='/'>
-              <h2 className='font-bold text-2xl flex  ] font-dm-sans items-center gap-2'>
-              <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2>
+              {/* <h2 className='font-bold text-2xl flex  ] font-dm-sans items-center gap-2'>
+              <FaGlobe className='text-[#f37b63]'></FaGlobe>Tourio</h2> */}
+              <img src={logo} alt="" />
               </Link>
             </div>
           </div>

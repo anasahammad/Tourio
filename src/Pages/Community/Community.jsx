@@ -3,7 +3,7 @@ import React from 'react';
 const Community = () => {
     return (
         <div className="min-h-screen ">
-            <div className="bg-[#EFEEDB] py-8 px-4 text-center ">
+            <div className="bg-[#FDF0EA] py-8 px-4 text-center ">
                 <h1 className="text-2xl md:text-4xl font-bold font-dm-sans">Community</h1>
                 <p className="font-kaushan-script text-lg text-[#F26F73] md:text-xl mt-2">A place to connect, share, and learn</p>
             </div>

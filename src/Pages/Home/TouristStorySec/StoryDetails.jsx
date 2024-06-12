@@ -7,7 +7,7 @@ const StoryDetails = () => {
     console.log(story);
     return (
         <div>
-           <div className="bg-[#EFEEDB] py-6 px-4 text-center">
+           <div className="bg-[#FDF0EA] py-6 px-4 text-center">
                 <h1 className="text-2xl font-bold font-dm-sans  md:text-4xl">Story Details</h1>
                 <p className="font-kaushan-script text-[#F26F73]">Let's Know travelers experience</p>
             </div>
@@ -19,9 +19,9 @@ const StoryDetails = () => {
                 </div>
                 <div>
                 <div className="flex  md:h-[450px] mx-auto md:w-full mb-8 sm:px-4  ">
-				<div className="flex flex-grow justify-center flex-col p-6 space-y-4  rounded shadow sm:p-8 bg-[#18877b]">
+				<div className="flex flex-grow justify-center flex-col p-6 space-y-4  rounded shadow sm:p-8 bg-[#f37b63]">
 					<div className="space-y-6  py-10 ">
-						<h4 className="text-2xl text-[#f37b63]  font-medium ">20% Off</h4>
+						<h4 className="text-2xl text-[#dddd]  font-medium ">20% Off</h4>
 						<span className="text-4xl text-white font-bold font-dm-sans ">The Best Travel Adventure
 							
 						</span>
