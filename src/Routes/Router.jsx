@@ -25,6 +25,7 @@ import TouristRoute from "./TouristRoute";
 import TourGuideRoute from "./TourGuideRoute";
 import TourTypePage from "../components/Home/TourTypeSection/TourTypePage";
 import ErrorPage from "../Pages/ErrorPage";
+import BookingSummary from "../Pages/Dashboard/Admin/BookingSummary";
 
 export const router = createBrowserRouter([ 
     { 
@@ -120,6 +121,13 @@ export const router = createBrowserRouter([
                     <ManageUsers/>
                 </PrivateRoutes>,
                 loader: ()=>fetch(`${import.meta.env.VITE_API_KEY}/user-count`)
+            },
+            {
+                path: "booking-summary",
+                element: <PrivateRoutes>
+                    <BookingSummary/>
+                </PrivateRoutes>,
+                // loader: ()=>fetch(`${import.meta.env.VITE_API_KEY}/user-count`)
             },
 
 
