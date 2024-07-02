@@ -102,8 +102,8 @@ To get Tourio up and running on your local machine, follow these steps:
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/tourio.git
-    cd tourio
+    git clone https://github.com/anasahammad/Tourio.git
+    cd Tourio
     ```
 
 2. **Install backend dependencies:**
