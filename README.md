@@ -3,7 +3,8 @@
 Welcome to Tourio, a comprehensive tour guide website designed to enhance the tourism experience in Bangladesh. This platform offers a multitude of functionalities to cater to tourists, tour guides, and admins.
 
 **Live Demo:** [Tourio Live Demo](https://tourio-a04d8.web.app/)
-**Server Side Repo:** [ Server Github Ripo](https://github.com/anasahammad/Tourio-server)
+
+**Server Side Repo:** [Tourio Server Repository](https://github.com/anasahammad/Tourio-server)
 
 ## Features
 
